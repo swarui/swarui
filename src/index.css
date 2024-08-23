@@ -1,0 +1,66 @@
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+
+.nav.active{
+  color: blue;
+}
+
+.nav:hover{
+  color:blue
+}
+
+
+.type-writer .Typewriter__cursor {
+  animation: none; /* Disables blinking */
+  display: inline-block;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.hover-zoom {
+  transition: transform 0.5s ease; /* Smooth transition */
+}
+
+.hover-zoom:hover {
+  transform: scale(1.2); /* Zoom out effect */
+}
+/* Button Code */
+*{
+  cursor: pointer;
+}
+/* .git{
+  background-color: '#9C9DD8'
+  bor
+   border-radius: '5px'
+    font-family: 'Poppins'
+     font-size: '15px'
+     font-weight: '500'
+     border:'1px solid black' 
+} */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skills-name {
+  padding: 0.8rem 1.25rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  font-size: var(--small-font-size);
+  background: var(--first-color-lighter);
+  border-radius: 5px;
+  font-weight: 600;
+  color: var(--title-color);
+  transition: 0.3s ease;
+}
+
+/* Fade in key frames */
+
+
