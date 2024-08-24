@@ -41,7 +41,7 @@ const projo = [
     title: 'Bank Of Flatiron',
     description: 'Bank of flatiron web app where users can see bank transactions, add, filter transactions by searching and deleting a transaction',
     image: img4,
-    url: 'https://chic-daffodil-cd6035.netlify.app/',
+    url: 'https://thebankofflatiron.netlify.app/',
     github: 'https://github.com/swarui/phase-2-wk1-code-challenge-flatiron-bank-.git',
     website: 'dhdhdh'
   },
