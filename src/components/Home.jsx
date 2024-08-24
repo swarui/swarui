@@ -25,7 +25,7 @@ function Home() {
 
         <div className="flex flex-col lg:flex-row items-center mt-10 "   >
           {/* The Left text body */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1  p-5 lg:p-10 lg:mt-20 "  data-aos = 'fade-right' >
+          <div className="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1  p-5 lg:p-10 lg:mt-20 "  data-aos = 'fade-up'   >
             <h1
               style={{ fontFamily: "Poppins", color: "#e7eaf6" }}
               className="text-3xl font-bold lg:mt-20  sm:text-2xl md:text-2xl   " 
@@ -41,7 +41,7 @@ function Home() {
 
             <h2
               style={{ fontFamily: "Poppins", color: "#e7eaf6" }}
-              className="text-1xl font mt-4 " data-aos = 'fade-right'
+              className="text-1xl font mt-4 " data-aos = ''
             >
               {" "}
               I am a passionate Front-End software engineer dedicated to both mastering my
@@ -71,7 +71,7 @@ function Home() {
           </div>
 
           {/* Image Body */}
-          <div className="h-auto lg:w-1/2 flex justify-center order-1 lg:order-2 "  data-aos = 'fade-left' >
+          <div className="h-auto lg:w-1/2 flex justify-center order-1 lg:order-2 "  data-aos = 'fade-up' >
           <img className="lg:w-[350px] md:w-[300px] w-[300px] h-auto mt-10 md:mt-20" src={Picha} alt="" />
           <div>
               <img
