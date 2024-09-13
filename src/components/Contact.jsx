@@ -31,7 +31,7 @@ function Contact() {
           with me via phone, email or either of my socials
         </h1>
 
-        <div className="flex flex-row justify-center sm:justify-center md:justify-center lg:justify-center mt-10 space-x-5 text-3xl text-center ">
+        <div className="flex flex-row justify-center sm:justify-center md:justify-center lg:justify-center mt-10 space-x-5 text-3xl text-center  max-h-screen ">
           {" "}
           <a href="https://github.com/swarui" target="_blank">
             <FaGithub className="icon hover-zoom white  text-blue-200 " />{" "}

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
-import { FaTimes} from 'react-icons/fa';
-import {  FaBarsStaggered } from 'react-icons/fa6';
-
+import { FaTimes } from "react-icons/fa";
+import { FaBarsStaggered } from "react-icons/fa6";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,22 +22,34 @@ function Navbar() {
             // spy={true}
             // offset={-90} // Adjust this offset according to your layout
           >
-            <span className="text-[15px] font-medium cursor-pointer  text-white "   style={{ fontFamily: 'Poppins', whiteSpace: 'nowrap' }}>
+            <span
+              className="text-[15px] font-medium cursor-pointer  text-white "
+              style={{ fontFamily: "Poppins", whiteSpace: "nowrap" }}
+            >
               Steve <span className="text-blue-800">Warui</span>
             </span>
           </Link>
         </div>
         <div className="lg:hidden flex items-center">
           <button onClick={toggleMenu} className="flex items-center">
-            <FaBarsStaggered size={20} className={`text-white ${isOpen ? 'hidden' : 'block'}`} />
-            <FaTimes size={20} className={`text-white ${isOpen ? 'block' : 'hidden'}`} />
+            <FaBarsStaggered
+              size={20}
+              className={`text-white ${isOpen ? "hidden" : "block"}`}
+            />
+            <FaTimes
+              size={20}
+              className={`text-white ${isOpen ? "block" : "hidden"}`}
+            />
           </button>
         </div>
         <div className="  hidden lg:flex items-center justify-end w-full ">
-          <ul style={{ fontFamily: "Poppins" }} className="flex flex-row gap-8 text-[15px] cursor-pointer mr-8 p-2">
+          <ul
+            style={{ fontFamily: "Poppins" }}
+            className="flex flex-row gap-8 text-[15px] cursor-pointer mr-8 p-2"
+          >
             <li>
               <Link
-              className="nav"
+                className="nav"
                 duration={500}
                 smooth={true}
                 to="home"
@@ -51,8 +62,7 @@ function Navbar() {
             </li>
             <li>
               <Link
-                            className="nav"
-
+                className="nav"
                 duration={500}
                 smooth={true}
                 to="about"
@@ -65,8 +75,7 @@ function Navbar() {
             </li>
             <li>
               <Link
-                            className="nav"
-
+                className="nav"
                 duration={500}
                 smooth={true}
                 to="skills"
@@ -77,11 +86,10 @@ function Navbar() {
                 Skills
               </Link>
             </li>
-            
+
             <li>
               <Link
-                            className="nav"
-
+                className="nav"
                 duration={500}
                 smooth={true}
                 to="projects"
@@ -94,8 +102,7 @@ function Navbar() {
             </li>
             <li>
               <Link
-                            className="nav"
-
+                className="nav"
                 duration={500}
                 smooth={true}
                 to="contact"
@@ -110,13 +117,17 @@ function Navbar() {
         </div>
       </div>
       <div
-        className={`fixed top-0 right-0 h-full w-48 overflow-visible bg-gray-900 text-white transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out lg:hidden`}
+        className={`fixed top-0 right-0 h-full w-48 overflow-visible bg-gray-900 text-white transform z-10 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out lg:hidden`}
       >
-        <ul    style={{ fontFamily: "Poppins",  }} className="  flex flex-col gap-6 mt-20 text-lg cursor-pointer px-4 text-[14.5px]">
+        <ul
+          style={{ fontFamily: "Poppins" }}
+          className="  flex flex-col gap-6 mt-20 text-lg cursor-pointer px-4 text-[14.5px]"
+        >
           <li>
             <Link
-                          className="nav"
-
+              className="nav"
               duration={500}
               smooth={true}
               to="home"
@@ -130,8 +141,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-                          className="nav"
-
+              className="nav"
               duration={500}
               smooth={true}
               to="about"
@@ -145,8 +155,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-                          className="nav"
-
+              className="nav"
               duration={500}
               smooth={true}
               to="skills"
@@ -160,8 +169,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-                          className="nav"
-
+              className="nav"
               duration={500}
               smooth={true}
               to="projects"
@@ -175,8 +183,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-                          className="nav"
-
+              className="nav"
               duration={500}
               smooth={true}
               to="contact"
