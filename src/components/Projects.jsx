@@ -11,24 +11,6 @@ import React, { useEffect } from 'react';
 const projo = [
   {
     id: 1,
-    title: 'Flight Booking',
-    description: 'A website that provides users with a place whereby they can book their flights to various destinations',
-    image: img1,
-    url: 'https://flight-fusion-booking-website.vercel.app/',
-    github: 'https://github.com/VictorMurithi/FlightFusion-booking-website.git',
-    website: 'https://flight-fusion-booking-website.vercel.app/'
-  },
-  {
-    id: 2,
-    title: 'Photo Store',
-    description: 'The project is about an application which is used to post, like, add and delete photos.',
-    image: img2,
-    url: 'https://phase-4-photo-store-project-jmm2.onrender.com/',
-    github: 'https://github.com/swarui/Phase-4-Photo-Store-Project.git',
-    website: 'https://phase-4-photo-store-project-jmm2.onrender.com/'
-  },
-  {
-    id: 3,
     title: 'Movie Recommendation',
     description: 'A movie recommendation website that helps you select movies to your preference',
     image: img3,
@@ -37,14 +19,34 @@ const projo = [
     website: 'https://swarui.github.io/movie-web-app/'
   },
   {
-    id: 4,
+    id: 2,
     title: 'Bank Of Flatiron',
     description: 'Bank of flatiron web app where users can see bank transactions, add, filter transactions by searching and deleting a transaction',
     image: img4,
     url: 'https://thebankofflatiron.netlify.app/',
     github: 'https://github.com/swarui/phase-2-wk1-code-challenge-flatiron-bank-.git',
-    website: 'dhdhdh'
+    website: 'https://github.com/swarui/phase-2-wk1-code-challenge-flatiron-bank-.git'
   },
+  {
+    id: 3,
+    title: 'Flight Booking',
+    description: 'A website that provides users with a place whereby they can book their flights to various destinations',
+    image: img1,
+    url: 'https://flight-fusion-booking-website.vercel.app/',
+    github: 'https://github.com/VictorMurithi/FlightFusion-booking-website.git',
+    website: 'https://flight-fusion-booking-website.vercel.app/'
+  },
+  {
+    id: 4,
+    title: 'Photo Store',
+    description: 'The project is about an application which is used to post, like, add and delete photos.',
+    image: img2,
+    url: 'https://phase-4-photo-store-project-jmm2.onrender.com/',
+    github: 'https://github.com/swarui/Phase-4-Photo-Store-Project.git',
+    website: 'https://phase-4-photo-store-project-jmm2.onrender.com/'
+  },
+  
+ 
 ];
 
 function Projects() {
