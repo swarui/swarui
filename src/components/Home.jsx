@@ -73,11 +73,13 @@ function Home() {
                 target="blank"
               >
                 {" "}
-                <button
+                <button  
                   style={{ fontFamily: "Poppins" }}
                   className="cursor-pointer flex justify-between px-4 py-2 text-white  shadow-lg hover:scale-105 duration-500 hover:ring-1 border border-orange-300  mt-6"
                 >
-                  Resume
+                    <svg className="fill-current w-4 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+
+                  Resume 
                 </button>{" "}
               </a>
             </div>
