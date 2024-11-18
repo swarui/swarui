@@ -27,8 +27,8 @@ function Contact() {
           className="text-center mt-4  p-5 "
           style={{ fontFamily: "Poppins", color: "White" }}
         >
-          Interested in discussing a project or just want to say hi? Connect
-          with me via phone, email or either of my socials
+                        I'm currently open to new opportunities.Connect
+                        with me via phone, email or either of my socials
         </h1>
 
         <div className="flex flex-row justify-center sm:justify-center md:justify-center lg:justify-center mt-10 space-x-5 text-3xl text-center  max-h-screen ">

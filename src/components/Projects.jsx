@@ -1,7 +1,7 @@
 import img1 from '../assets/1.png';
 import img2 from '../assets/2.png';
 import img3 from '../assets/3.png';
-import img4 from '../assets/4.jpg';
+import img4 from '../assets/4.png';
 import { FaGithub } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
 import Aos from 'aos';
@@ -20,12 +20,12 @@ const projo = [
   },
   {
     id: 2,
-    title: 'Bank Of Flatiron',
-    description: 'Bank of flatiron web app where users can see bank transactions, add, filter transactions by searching and deleting a transaction',
+    title: 'Coffee Shop',
+    description: ' A coffee website that showcases a variety of premium coffee , expertly brewed coffee.',
     image: img4,
     url: 'https://thebankofflatiron.netlify.app/',
-    github: 'https://github.com/swarui/phase-2-wk1-code-challenge-flatiron-bank-.git',
-    website: 'https://github.com/swarui/phase-2-wk1-code-challenge-flatiron-bank-.git'
+    github: 'https://github.com/swarui/coffeelandingpage',
+    website: 'https://kahawa-ke.netlify.app/'
   },
   {
     id: 3,
