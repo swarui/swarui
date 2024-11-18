@@ -23,7 +23,7 @@ const projo = [
     title: 'Coffee Shop',
     description: ' A coffee website that showcases a variety of premium coffee , expertly brewed coffee.',
     image: img4,
-    url: 'https://thebankofflatiron.netlify.app/',
+    url: 'https://kahawa-ke.netlify.app/',
     github: 'https://github.com/swarui/coffeelandingpage',
     website: 'https://kahawa-ke.netlify.app/'
   },
