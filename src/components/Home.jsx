@@ -99,6 +99,8 @@ function Home() {
               className="lg:w-[350px] md:w-[300px] w-[300px] h-auto mt-10 md:mt-20"
               src={Picha}
               alt=""
+              loading="lazy"
+
             />
             <div>
               <img style={{ width: "10px", paddingRight: "10px" }} />
