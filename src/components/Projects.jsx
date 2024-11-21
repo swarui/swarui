@@ -70,6 +70,8 @@ function Projects() {
               <div className='relative overflow-hidden h-48 text-white'>
                 <img
                   src={project.image}
+                  loading="lazy"
+
                   alt={project.title}
                   className='w-full h-full object-cover transition-transform transform hover:scale-105'
                 />
