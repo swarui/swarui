@@ -69,7 +69,7 @@ function Home() {
             </div>
             <div className="flex flex-row sm:justify-center lg:justify-start md:justify-center sm:text-center text-center justify-center   mt-5  lg:mt-0 ">
               <a
-                href="https://drive.google.com/file/d/1aSBOR4KAXMza8BsL9r_plKNsdWMyucCk/view"
+                href="https://drive.google.com/file/d/1OAklcMzJD7yzD3-Es9D2I5Arukji3TAV/view?usp=sharing"
                 target="blank"
               >
                 {" "}
