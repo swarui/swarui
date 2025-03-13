@@ -9,7 +9,6 @@ function Home() {
           >
             Hey There, I'm Steve <span className="text-blue-600">Warui</span>
           </h1>
-
           <h2
             style={{
               fontFamily: "Afacad",
@@ -27,6 +26,12 @@ function Home() {
             and ensure its functionality as desired. I love bringing ideas to
             life, turning concepts into fully realized projects.
           </h2>
+          <button
+            style={{ fontFamily: "Afacad", fontSize: "1.2rem" }}
+            className="cursor-pointer flex justify-between px-6 py-1 text-white  shadow-lg  hover:ring-1 border border-blue-600 rounded-md mt-6"
+          >
+            Resume
+          </button>{" "}
         </div>
       </div>
     </>
