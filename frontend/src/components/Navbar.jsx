@@ -69,7 +69,7 @@ function Navbar() {
     {/* Desktop Navigation */}
     <div  style={{fontFamily:'Afacad', fontSize: '1.2rem'}} className="flex items-center">
       <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
-        Contact
+        Reach Out
       </a>
     </div>
   </div>
