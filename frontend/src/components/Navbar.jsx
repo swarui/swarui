@@ -56,10 +56,10 @@ function Navbar() {
 
   {/* Navbar Container */}
   <div
-    className={`fixed top-4 left-1/2 -translate-x-1/2 h-16 max-w-[850px] w-[90%] flex justify-between items-center transition-colors duration-300 rounded-lg px-6 ${
+    className={`fixed top-4 left-1/2 -translate-x-1/2 h-16 max-w-[790px] w-[90%] flex justify-between items-center transition-colors px-6 duration-300 rounded-lg  ${
       isScrolled ? "bg-[#1a1a1a] bg-opacity-95 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.7)] " : "bg-transparent"
     }`}
-    style={{ position: "fixed", zIndex: 1000 }}
+    style={{ position: "fixed", zIndex: 1000,  }}
   >
     {/* Logo */}
     <a style={{ fontFamily: "Nunito" }} href="/" className="text-1xl text-white">
@@ -67,7 +67,7 @@ function Navbar() {
     </a>
 
     {/* Desktop Navigation */}
-    <div className="flex items-center">
+    <div  style={{fontFamily:'Afacad', fontSize: '1.2rem'}} className="flex items-center">
       <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
         Contact
       </a>
