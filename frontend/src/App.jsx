@@ -1,13 +1,17 @@
+import Navbar from "./components/Navbar";
+import Home from "../src/components/Home";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
 function App() {
   return (
-    <div className="noise-background">
-      <div className="container">
-        <h1>Hello Vite + React</h1>
-        <p>This is a demonstration of a dark noise background with subtle gradient effects, similar to yasirnawaz.me</p>
-      </div>
-    </div>
-  )
+    <>
+      <div className="noise-background">
+        <Navbar />
+          <Home />
+          <Skills />
+          <Projects />
+        </div>
+    </>
+  );
 }
-
-export default App
-
+export default App;
