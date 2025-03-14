@@ -60,3 +60,15 @@ body {
   position: relative;
   z-index: 2;
 }
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+box-shadow: 0 0 0px 1000px #1a1a1a inset; /* Matches your form's background */
+-webkit-text-fill-color: #fff; /* Ensures text color stays white */
+transition: background-color 5000s ease-in-out 0s;
+}
