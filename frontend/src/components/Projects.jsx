@@ -40,7 +40,7 @@ const projo = [
     title: "Flight Booking",
     description:
       "A website that allows users to book their flights to various destinations.",
-    technologies: ["Html", "CSS", "Js"],
+    technologies: ["React", "Flask", "Bootstrap", "SweetAlert"],
     image: img1,
     url: "https://flight-fusion-booking-website.vercel.app/",
     github: "https://github.com/VictorMurithi/FlightFusion-booking-website.git",
@@ -51,7 +51,7 @@ const projo = [
     title: "Photo Store",
     description:
       "An application that allows users to post, like, add, and delete photos.",
-    technologies: ["Html", "CSS", "Js"],
+    technologies: ["React", "SemanticUI", "Css", "Flask"],
     image: img2,
     url: "https://phase-4-photo-store-project-jmm2.onrender.com/",
     github: "https://github.com/swarui/Phase-4-Photo-Store-Project.git",
