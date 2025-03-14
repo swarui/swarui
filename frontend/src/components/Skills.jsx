@@ -16,17 +16,17 @@ export default function Skills() {
       className="max-w-[780px] w-[90%] mx-auto py-16"
     >
       <h1 className="text-left text-4xl font-bold text-white mb-2">
-        Projects
+        Technologies
       </h1>
       <p className="text-left text-gray-400 mb-12">
-        My Skillset and Technologies
+        My Technologies and SkillSet
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-4 gap-5 text-center mt-20">
+      <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-4 gap-5 text-center mt-10">
         <button
           style={{
             backgroundColor: "#3b3b3b",
-            padding: "10px 19px",
+            padding: "5px 15px",
             borderRadius: "5px",
             fontFamily: "Afacad",
             fontSize: "17px",
