@@ -2,7 +2,7 @@ function Home() {
   return (
     <>
       <div className="flex justify-center items-center min-h-screen relative z-[1] pt-[5rem] sm:pt-[8rem] lg:pt-20 overflow-hidden">
-        <div className="max-w-[800px] w-[90%] mx-auto text-left px-2">
+        <div className="max-w-[780px] w-[90%] mx-auto text-left px-2">
           <h1
             className="text-3xl sm:text-3xl md:text-5xl font-medium "
             style={{ fontFamily: "Afacad", fontSize: "2.5rem" }}
