@@ -71,10 +71,10 @@ function Projects() {
       id="projects"
       className="max-w-[780px] w-[90%] mx-auto py-16"
     >
-      <h1 className="text-center text-4xl font-bold text-white mb-2">
+      <h1 className="text-left text-4xl font-bold text-white mb-2">
         Projects
       </h1>
-      <p className="text-center text-gray-400 mb-12">
+      <p className="text-left text-gray-400 mb-12">
         Check out some of my recent work
       </p>
 
@@ -96,7 +96,7 @@ function Projects() {
 
                 {/* Content Section */}
                 <div className="p-6 lg:p-8 w-full lg:w-3/5 flex flex-col justify-center">
-                  <h2 className="text-2xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                  <h2 className="text-2xl font-bold mb-3 text-white ">
                     {project.title}
                   </h2>
                   <p className="text-gray-400 mb-6">{project.description}</p>
