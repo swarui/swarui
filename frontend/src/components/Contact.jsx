@@ -4,10 +4,10 @@ import { IoLogoLinkedin } from "react-icons/io5"
 import { FaXTwitter } from "react-icons/fa6"
 import { FaTelegramPlane } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-function Projects() {
+function Contact() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
     name: "",
@@ -20,6 +20,23 @@ function Projects() {
     message: "",
   })
   const [formState, setFormState] = useState("idle") // idle, sending, success, error
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if mobile on mount and when window resizes
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+
+    // Initial check
+    checkIfMobile()
+
+    // Add event listener
+    window.addEventListener("resize", checkIfMobile)
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIfMobile)
+  }, [])
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -89,24 +106,24 @@ function Projects() {
   }
 
   const formVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, x: isMobile ? -10 : -20 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
-    exit: { opacity: 0, x: 20, transition: { duration: 0.2 } },
+    exit: { opacity: 0, x: isMobile ? 10 : 20, transition: { duration: 0.2 } },
   }
 
   return (
-    <div id="contact">
-      <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[780px] w-[90%] mx-auto py-16">
-        <h1 className="text-left text-4xl font-bold text-white mb-2">Reach Out</h1>
-        <p className="text-left text-gray-400 mb-12">Connect with me :)</p>
+    <div id="contact" className="px-4 sm:px-0">
+      <div style={{ fontFamily: "Afacad" }} className="max-w-[780px] w-full mx-auto py-8 sm:py-16">
+        <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mb-2">Reach Out</h1>
+        <p className="text-left text-gray-400 mb-8 sm:mb-12">Connect with me :)</p>
 
         {/* Progress Indicator */}
-        <div className="flex justify-center mb-6">
-          <div className="flex items-center w-full max-w-[300px]">
+        <div className="flex justify-center mb-4 sm:mb-6">
+          <div className="flex items-center w-full max-w-[250px] sm:max-w-[300px]">
             {[1, 2, 3].map((stepNumber) => (
               <div key={stepNumber} className="flex-1 flex items-center">
                 <div
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                     step >= stepNumber ? "bg-blue-600" : "bg-gray-700"
                   } ${step === stepNumber ? "scale-125" : ""}`}
                 />
@@ -123,7 +140,7 @@ function Projects() {
         </div>
 
         {/* Form Steps */}
-        <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-6 rounded-lg shadow-xl">
+        <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-4 sm:p-6 rounded-lg shadow-xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -131,7 +148,7 @@ function Projects() {
               animate="visible"
               exit="exit"
               variants={formVariants}
-              className="w-[90%] max-w-[800px] mx-auto"
+              className="w-full sm:w-[90%] max-w-[800px] mx-auto"
             >
               {step === 1 && (
                 <form
@@ -140,7 +157,7 @@ function Projects() {
                     handleNext()
                   }}
                 >
-                  <h2 className="mb-5 text-white text-xl font-medium">What's your name?</h2>
+                  <h2 className="mb-4 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your name?</h2>
                   <div className="relative">
                     <input
                       type="text"
@@ -149,20 +166,20 @@ function Projects() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your name"
-                      className={`w-full p-3 mb-1 border ${
+                      className={`w-full p-2.5 sm:p-3 mb-1 border ${
                         errors.name ? "border-red-500" : "border-gray-600"
                       } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
                     />
-                    {errors.name && <p className="text-red-500 text-sm mb-4">{errors.name}</p>}
+                    {errors.name && <p className="text-red-500 text-xs sm:text-sm mb-2 sm:mb-4">{errors.name}</p>}
                   </div>
-                  <div className="flex justify-end mt-6">
+                  <div className="flex justify-end mt-4 sm:mt-6">
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md transition-colors duration-300 flex items-center"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
                     >
                       Next
                       <svg
-                        className="w-4 h-4 ml-2"
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -182,7 +199,7 @@ function Projects() {
                     handleNext()
                   }}
                 >
-                  <h2 className="mb-5 text-white text-xl font-medium">What's your email address?</h2>
+                  <h2 className="mb-4 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your email address?</h2>
                   <div className="relative">
                     <input
                       type="email"
@@ -191,19 +208,20 @@ function Projects() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Enter your email"
-                      className={`w-full p-3 mb-1 border ${
+                      className={`w-full p-2.5 sm:p-3 mb-1 border ${
                         errors.email ? "border-red-500" : "border-gray-600"
                       } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
                     />
-                    {errors.email && <p className="text-red-500 text-sm mb-4">{errors.email}</p>}
+                    {errors.email && <p className="text-red-500 text-xs sm:text-sm mb-2 sm:mb-4">{errors.email}</p>}
                   </div>
-                  <div className="flex justify-between mt-6">
+                  <div className="flex justify-between mt-4 sm:mt-6">
                     <button
+                      type="button"
                       onClick={handleBack}
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-md transition-colors duration-300 flex items-center"
+                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
                     >
                       <svg
-                        className="w-4 h-4 mr-2"
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -215,11 +233,11 @@ function Projects() {
                     </button>
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md transition-colors duration-300 flex items-center"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
                     >
                       Next
                       <svg
-                        className="w-4 h-4 ml-2"
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -234,7 +252,9 @@ function Projects() {
 
               {step === 3 && (
                 <form onSubmit={handleSubmit}>
-                  <h2 className="mb-5 text-white text-xl font-medium">What would you like to say?</h2>
+                  <h2 className="mb-4 sm:mb-5 text-white text-lg sm:text-xl font-medium">
+                    What would you like to say?
+                  </h2>
                   <div className="relative">
                     <textarea
                       name="message"
@@ -242,21 +262,21 @@ function Projects() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Enter your message"
-                      rows={5}
-                      className={`w-full p-3 mb-1 border ${
+                      rows={4}
+                      className={`w-full p-2.5 sm:p-3 mb-1 border ${
                         errors.message ? "border-red-500" : "border-gray-600"
                       } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none`}
                     />
-                    {errors.message && <p className="text-red-500 text-sm mb-4">{errors.message}</p>}
+                    {errors.message && <p className="text-red-500 text-xs sm:text-sm mb-2 sm:mb-4">{errors.message}</p>}
                   </div>
-                  <div className="flex justify-between mt-6">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0 mt-4 sm:mt-6">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-md transition-colors duration-300 flex items-center"
+                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base"
                     >
                       <svg
-                        className="w-4 h-4 mr-2"
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -269,7 +289,7 @@ function Projects() {
                     <button
                       type="submit"
                       disabled={formState === "sending"}
-                      className={`px-6 py-2 rounded-md text-white transition-all duration-300 flex items-center
+                      className={`px-4 sm:px-6 py-2 rounded-md text-white transition-all duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base
                         ${
                           formState === "sending"
                             ? "bg-yellow-500"
@@ -283,7 +303,7 @@ function Projects() {
                       {formState === "sending" ? (
                         <>
                           <svg
-                            className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                            className="animate-spin -ml-1 mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 text-white"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -307,7 +327,7 @@ function Projects() {
                       ) : formState === "success" ? (
                         <>
                           <svg
-                            className="w-4 h-4 mr-2"
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -320,7 +340,7 @@ function Projects() {
                       ) : formState === "error" ? (
                         <>
                           <svg
-                            className="w-4 h-4 mr-2"
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -338,7 +358,7 @@ function Projects() {
                       ) : (
                         <>
                           <svg
-                            className="w-4 h-4 mr-2"
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -363,20 +383,20 @@ function Projects() {
         </div>
 
         {/* Social Links */}
-        <div className="mt-12 mb-4 text-center">
-          <h3 className="text-white text-xl mb-4">Or connect with me on social media</h3>
+        <div className="mt-8 sm:mt-12 mb-3 sm:mb-4 text-center">
+          <h3 className="text-white text-lg sm:text-xl mb-4">Or connect with me on social media</h3>
         </div>
-        <div className="flex flex-wrap justify-center gap-6 mt-4">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-2 sm:mt-4">
           <a
             href="https://github.com/swarui"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-3 rounded-full transition-all duration-300 group-hover:bg-gray-700 group-hover:-translate-y-1">
-              <FaGithub className="text-2xl text-white" />
+            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-700 group-hover:-translate-y-1">
+              <FaGithub className="text-xl sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
               GitHub
             </span>
           </a>
@@ -386,10 +406,10 @@ function Projects() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-3 rounded-full transition-all duration-300 group-hover:bg-blue-700 group-hover:-translate-y-1">
-              <IoLogoLinkedin className="text-2xl text-white" />
+            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-700 group-hover:-translate-y-1">
+              <IoLogoLinkedin className="text-xl sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
               LinkedIn
             </span>
           </a>
@@ -399,10 +419,10 @@ function Projects() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-3 rounded-full transition-all duration-300 group-hover:bg-gray-900 group-hover:-translate-y-1">
-              <FaXTwitter className="text-2xl text-white" />
+            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-900 group-hover:-translate-y-1">
+              <FaXTwitter className="text-xl sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Twitter
             </span>
           </a>
@@ -412,10 +432,10 @@ function Projects() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-3 rounded-full transition-all duration-300 group-hover:bg-blue-500 group-hover:-translate-y-1">
-              <FaTelegramPlane className="text-2xl text-white" />
+            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-500 group-hover:-translate-y-1">
+              <FaTelegramPlane className="text-xl sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Telegram
             </span>
           </a>
@@ -425,17 +445,17 @@ function Projects() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-3 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 group-hover:-translate-y-1">
-              <FaInstagram className="text-2xl text-white" />
+            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 group-hover:-translate-y-1">
+              <FaInstagram className="text-xl sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Instagram
             </span>
           </a>
           <a href="mailto:stevewaruim@gmail.com" className="flex flex-col items-center group">
-            <div className="bg-gray-800 p-3 rounded-full transition-all duration-300 group-hover:bg-red-500 group-hover:-translate-y-1">
+            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-red-500 group-hover:-translate-y-1">
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
@@ -443,7 +463,7 @@ function Projects() {
                 <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" />
               </svg>
             </div>
-            <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Email
             </span>
           </a>
@@ -453,5 +473,5 @@ function Projects() {
   )
 }
 
-export default Projects
+export default Contact
 

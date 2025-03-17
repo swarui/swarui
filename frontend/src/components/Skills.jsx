@@ -11,12 +11,13 @@ import Figma from "../assets/Figma.png"
 const skills = [
   { name: "Javascript", icon: Javascript },
   { name: "HTML", icon: Html },
-  { name: "CSS", icon: Css },
   { name: "React", icon: React1 },
   { name: "Tailwind", icon: Tailwind },
   { name: "Bootstrap", icon: Bootstrap },
   { name: "Python", icon: Python },
   { name: "Figma", icon: Figma },
+  { name: "CSS", icon: Css },
+
 ]
 
 export default function Skills() {
