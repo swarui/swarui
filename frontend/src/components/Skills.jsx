@@ -1,169 +1,44 @@
-import React from "react";
-import Bootstrap from "../assets/Bootstrap.png";
-import Python from "../assets/Python.png";
-import Tailwind from "../assets/Tailwind.png";
-import Javascript from "../assets/Javascript.png";
-import React1 from "../assets/React1.png";
-import Css from "../assets/Css.png";
-import Html from "../assets/Html.png";
-import Figma from "../assets/Figma.png";
+import Bootstrap from "../assets/Bootstrap.png"
+import Python from "../assets/Python.png"
+import Tailwind from "../assets/Tailwind.png"
+import Javascript from "../assets/Javascript.png"
+import React1 from "../assets/React1.png"
+import Css from "../assets/Css.png"
+import Html from "../assets/Html.png"
+import Figma from "../assets/Figma.png"
+
+// Define skills array for easier management
+const skills = [
+  { name: "Javascript", icon: Javascript },
+  { name: "HTML", icon: Html },
+  { name: "CSS", icon: Css },
+  { name: "React", icon: React1 },
+  { name: "Tailwind", icon: Tailwind },
+  { name: "Bootstrap", icon: Bootstrap },
+  { name: "Python", icon: Python },
+  { name: "Figma", icon: Figma },
+]
 
 export default function Skills() {
   return (
-    <div
-      style={{ fontFamily: "Afacad" }}
-      id="projects"
-      className="max-w-[780px] w-[90%] mx-auto py-16"
-    >
-      <h1 className="text-left text-4xl font-bold text-white mb-2">
-        Technologies
-      </h1>
-      <p className="text-left text-gray-400 mb-12">
-        My Technologies and SkillSet
-      </p>
+    <div style={{ fontFamily: "Afacad" }} id="skills" className="max-w-[780px] w-[90%] mx-auto py-16">
+      <h1 className="text-left text-4xl font-bold text-white mb-2">Technologies</h1>
+      <p className="text-left text-gray-400 mb-12">My Technologies and Skill Set</p>
 
-      <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-4 gap-5 text-center mt-10">
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "5px 15px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "500",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "8px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={Javascript} className="w-5 h-5" alt="" />
-          Javascript
-        </button>
-
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "10px 35px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "400",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "8px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={Html} className="w-5 h-5" alt="" />
-          Html
-        </button>
-
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "10px 40px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "500",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "8px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={Css} className="w-6 h-6" alt="" />
-          Css
-        </button>
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "10px 29px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "500",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "8px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={React1} className="w-5 h-5" alt="" />
-          React
-        </button>
-
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "10px 19px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "500",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "8px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={Tailwind} className="w-5 h-5" alt="" />
-          Tailwind
-        </button>
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "10px 19px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "500",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "8px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={Bootstrap} className="w-5 h-5" alt="" />
-          Bootstrap
-        </button>
-
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "10px 25px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "500",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "11px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={Python} className="w-5 h-5" alt="" />
-          Python
-        </button>
-        <button
-          style={{
-            backgroundColor: "#3b3b3b",
-            padding: "10px 25px",
-            borderRadius: "5px",
-            fontFamily: "Afacad",
-            fontSize: "17px",
-            fontWeight: "500",
-            border: "1px solid black",
-            display: "flex",
-            alignItems: "center", // This centers the items vertically
-            gap: "11px", // Adjust the space between the image and text
-          }}
-        >
-          <img src={Figma} className="w-5 h-5" alt="" />
-          Figma
-        </button>
+      <div className="flex flex-wrap gap-3">
+        {skills.map((skill) => (
+          <div
+            key={skill.name}
+            className="bg-[#1c1c1c] rounded-md border border-gray-800 hover:bg-[#252525] transition-colors duration-200 inline-flex"
+          >
+            <div className="flex items-center gap-3 px-4 py-2.5">
+              <img src={skill.icon || "/placeholder.svg"} className="w-5 h-5" alt={`${skill.name} icon`} />
+              <span className="text-white text-base whitespace-nowrap">{skill.name}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  );
+  )
 }
+
