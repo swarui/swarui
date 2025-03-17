@@ -2,12 +2,22 @@
 @import "tailwindcss";
 
 
+
+
+
 /* Backgorund Color */
 
 :root {
   --background-color: rgb(19, 18, 18);
   --text-color: rgb(255, 255, 255);
+  --gradient-bg: radial-gradient(
+    circle at top right,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(255, 255, 255, 0.03) 30%,
+    rgba(255, 255, 255, 0) 60%
+  );
 }
+
 
 * {
 
@@ -63,12 +73,21 @@ body {
 
 
 
-html {
-  scroll-behavior: smooth;
-}
-input:-webkit-autofill,
+  html {
+    scroll-behavior: smooth;
+  }
+  input:-webkit-autofill,
 input:-webkit-autofill:focus {
-box-shadow: 0 0 0px 1000px #1a1a1a inset; /* Matches your form's background */
--webkit-text-fill-color: #fff; /* Ensures text color stays white */
-transition: background-color 5000s ease-in-out 0s;
+  box-shadow: 0 0 0px 1000px #1a1a1a inset; /* Matches your form's background */
+  -webkit-text-fill-color: #fff; /* Ensures text color stays white */
+  transition: background-color 5000s ease-in-out 0s;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 79%;
+  height: 10px; /* Adjust based on your design */
+  background: var(--gradient-bg); 
+  z-index: 1000; /* Ensure it's above content */
 }

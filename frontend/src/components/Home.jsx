@@ -5,7 +5,7 @@ function Home() {
         <div className="max-w-[780px] w-[90%] mx-auto text-left px-2">
           <h1
             className="text-3xl sm:text-3xl md:text-5xl font-medium "
-            style={{ fontFamily: "Afacad", fontSize: "2.5rem" }}
+            style={{ fontFamily: "Afacad", fontSize: "2.8rem" }}
           >
             Hey There, I'm Steve <span className="text-blue-600">Warui</span>
           </h1>
