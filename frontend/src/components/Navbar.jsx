@@ -34,33 +34,31 @@ function Navbar() {
 
   return (
     <>
-      {/* Navbar Blocker - This completely blocks the gradient effect */}
-      <div className="navbar"
-        // style={{
-        //   position: "fixed",
-        //   top: 0,
-        //   left: 0,
-        //   width: "80%",
-        //   height: "30px", // Increased height to ensure complete coverage
-        //   backgroundColor: "rgb(19, 18, 18", // Exact background color
-        //   zIndex: 1001, // Higher than both the navbar and the gradient
-        // }}
+      {/* Hidden Overlay */}
+      <div
+        className="fixed top-0 left-0 w-full h-20 bg-[#121212] z-[1000]"
+        style={{ pointerEvents: "none" }} // Prevents it from blocking clicks
       />
 
       {/* Navbar Container */}
       <div
         className={`fixed top-4 left-1/2 -translate-x-1/2 h-16 max-w-[790px] w-[90%] flex justify-between items-center transition-colors px-6 duration-300 rounded-lg ${
-          isScrolled ? "bg-[#1a1a1a] bg-opacity-95 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.7)]" : "bg-transparent"
+          isScrolled
+            ? "bg-[#1a1a1a] bg-opacity-95 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.7)]"
+            : "bg-transparent"
         }`}
-        style={{ position: "fixed", zIndex: 1002 }} // Increased z-index to be above the blocker
+        style={{ position: "fixed", zIndex: 1002 }} // Higher z-index to appear above
       >
         {/* Logo */}
         <a style={{ fontFamily: "Nunito" }} href="/" className="text-1xl text-white">
-          Steve Warui
+          &lt;Steve/&gt;
         </a>
 
         {/* Desktop Navigation */}
-        <div style={{ fontFamily: "Afacad", fontSize: "1.2rem" }} className="flex items-center">
+        <div
+          style={{ fontFamily: "Afacad", fontSize: "1.2rem" }}
+          className="flex items-center"
+        >
           <a href="/#contact" className="text-gray-300 hover:text-white transition-colors ml-4">
             Reach Out
           </a>

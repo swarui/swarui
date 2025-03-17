@@ -5,22 +5,13 @@
 
 
 
-/* Backgorund Color */
-
+/* Background Color */
 :root {
   --background-color: rgb(19, 18, 18);
   --text-color: rgb(255, 255, 255);
-  --gradient-bg: radial-gradient(
-    circle at top right,
-    rgba(255, 255, 255, 0.10) 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    rgba(255, 255, 255, 0) 60%
-  );
 }
 
-
 * {
-
   box-sizing: border-box;
 }
 
@@ -45,49 +36,81 @@ body {
 }
 
 .noise-background::before {
-  display: none;
-}
-
-.noise-background::after {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Ensure full viewport coverage */
+  height: 100vh;
   background: radial-gradient(
-    circle at top right,
-    rgba(255, 255, 255, 0.10) 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    rgba(255, 255, 255, 0) 60%
-  );
+      circle at top right,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.03) 25%,
+      rgba(255, 255, 255, 0) 50%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 30%,
+      rgba(255, 255, 255, 0) 60%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.01) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
   pointer-events: none;
   z-index: 1;
 }
 
+/* Code elements on sides */
+.code-element {
+  position: fixed;
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.07);
+  font-size: 120px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.code-element-left {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.code-element-right {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .noise-background > * {
   position: relative;
   z-index: 2;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
-
-  html {
-    scroll-behavior: smooth;
-  }
-  input:-webkit-autofill,
+input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  box-shadow: 0 0 0px 1000px #1a1a1a inset; /* Matches your form's background */
-  -webkit-text-fill-color: #fff; /* Ensures text color stays white */
+  box-shadow: 0 0 0px 1000px #1a1a1a inset;
+  -webkit-text-fill-color: #fff;
   transition: background-color 5000s ease-in-out 0s;
 }
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 79%;
-  height: 10px; /* Adjust based on your design */
-  background: var(--gradient-bg); 
-  z-index: 1000; /* Ensure it's above content */
+  height: 10px;
+  background: var(--gradient-bg);
+  z-index: 1000;
 }
+

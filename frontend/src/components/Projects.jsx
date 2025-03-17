@@ -71,9 +71,7 @@ function Projects() {
       id="projects"
       className="max-w-[780px] w-[90%] mx-auto py-16"
     >
-      <h1 className="text-left text-4xl font-bold text-white mb-2">
-        Projects
-      </h1>
+      <h1 className="text-left text-4xl font-bold text-white mb-2">Projects</h1>
       <p className="text-left text-gray-400 mb-12">
         Check out some of my recent work
       </p>
@@ -84,15 +82,14 @@ function Projects() {
             <div className="bg-gradient-to-r from-[#121212] to-[#302f2f]  border border-gray-800 rounded-xl overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500  ">
               <div className="flex flex-col lg:flex-row p-1">
                 {/* Image Container */}
-                <div className="relative w-full lg:w-2/4 bg-gradient-to-r from-[#2a2a2a] to-[#121212] rounded-lg p-4">
-                  <div className="w-full h-[200px] lg:h-[200px] rounded-lg overflow-hidden p-1">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-full rounded-lg object-cover duration-700"
-                    />
-                  </div>
-                </div>
+                <div className="relative w-full lg:w-2/4 rounded-xl overflow-hidden p-4">
+  <img
+    src={project.image || "/placeholder.svg"}
+    alt={project.title}
+    className="w-full h-full rounded-xl object-cover duration-700"
+  />
+</div>
+
 
                 {/* Content Section */}
                 <div className="p-6 lg:p-8 w-full lg:w-3/5 flex flex-col justify-center">
