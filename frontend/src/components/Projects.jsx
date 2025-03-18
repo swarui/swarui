@@ -21,8 +21,6 @@ const projo = [
     description: "A movie recommendation website that helps you select movies to your preference.",
     image: img3,
     technologies: ["HTML", "CSS", "JS"],
-    url: "https://swarui.github.io/movie-web-app/",
-    github: "https://github.com/swarui/movie-web-app.git",
     website: "https://swarui.github.io/movie-web-app/",
   },
   {
@@ -31,8 +29,6 @@ const projo = [
     description: "A coffee website that showcases a variety of premium coffee, expertly brewed.",
     image: img4,
     technologies: ["React", "TailwindCss", "Flask"],
-    url: "https://kahawa-ke.netlify.app/",
-    github: "https://github.com/swarui/coffeelandingpage",
     website: "https://kahawa-ke.netlify.app/",
   },
   {
@@ -41,8 +37,6 @@ const projo = [
     description: "A website that allows users to book their flights to various destinations.",
     image: img1,
     technologies: ["React", "CSS", "Bootstrap", "Sweetalert" ],
-    url: "https://flight-fusion-booking-website.vercel.app/",
-    github: "https://github.com/VictorMurithi/FlightFusion-booking-website.git",
     website: "https://flight-fusion-booking-website.vercel.app/",
   },
   {
@@ -51,19 +45,15 @@ const projo = [
     description: "An application that allows users to post, like, add, and delete photos.",
     image: img2,
     technologies: ["React", "Flask", "SemanticUI", "CSS"],
-    url: "https://phase-4-photo-store-project-jmm2.onrender.com/",
-    github: "https://github.com/swarui/Phase-4-Photo-Store-Project.git",
     website: "https://phase-4-photo-store-project-jmm2.onrender.com/",
   },
   {
     id: 5,
     title: "Portifolio Website",
-    description: "An application that allows users to post, like, add, and delete photos.",
+    description: "A professional portfolio showcasing the client's projects, skills, and achievements.",
     image: img5,
     technologies: ["React", "TailwindCSS", "Python"],
-    url: "https://phase-4-photo-store-project-jmm2.onrender.com/",
-    github: "https://github.com/swarui/Phase-4-Photo-Store-Project.git",
-    website: "https://phase-4-photo-store-project-jmm2.onrender.com/",
+    website: "https://phoevekardita.netlify.app/",
   },
 ]
 
@@ -115,14 +105,7 @@ function Projects() {
                   </div>
 
                   <div className="flex items-center gap-4 mt-auto">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 transition-colors"
-                    >
-                      <FaGithub className="w-5 h-5" />
-                    </a>
+                  
                     <a
                       href={project.website}
                       target="_blank"
