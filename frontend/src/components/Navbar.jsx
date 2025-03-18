@@ -42,7 +42,7 @@ function Navbar() {
 
       {/* Navbar Container */}
       <div
-        className={`fixed top-4 left-1/2 -translate-x-1/2 h-16 max-w-[790px] w-[90%] flex justify-between items-center transition-colors px-6 duration-300 rounded-lg ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 h-16 max-w-[800px] w-[90%] flex justify-between items-center transition-colors px-6 duration-300 rounded-lg ${
           isScrolled
             ? "bg-[#1a1a1a] bg-opacity-95 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.7)]"
             : "bg-transparent"
