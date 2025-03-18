@@ -18,6 +18,7 @@ const projo = [
     title: "Movie Recommendation",
     description: "A movie recommendation website that helps you select movies to your preference.",
     image: img3,
+    technologies: ["React", "CSS", "TMDb API"],
     url: "https://swarui.github.io/movie-web-app/",
     github: "https://github.com/swarui/movie-web-app.git",
     website: "https://swarui.github.io/movie-web-app/",
@@ -27,6 +28,7 @@ const projo = [
     title: "Coffee Shop",
     description: "A coffee website that showcases a variety of premium coffee, expertly brewed.",
     image: img4,
+    technologies: ["HTML", "CSS", "JavaScript"],
     url: "https://kahawa-ke.netlify.app/",
     github: "https://github.com/swarui/coffeelandingpage",
     website: "https://kahawa-ke.netlify.app/",
@@ -36,6 +38,7 @@ const projo = [
     title: "Flight Booking",
     description: "A website that allows users to book their flights to various destinations.",
     image: img1,
+    technologies: ["React", "Tailwind", "Node.js"],
     url: "https://flight-fusion-booking-website.vercel.app/",
     github: "https://github.com/VictorMurithi/FlightFusion-booking-website.git",
     website: "https://flight-fusion-booking-website.vercel.app/",
@@ -45,6 +48,7 @@ const projo = [
     title: "Photo Store",
     description: "An application that allows users to post, like, add, and delete photos.",
     image: img2,
+    technologies: ["React", "MongoDB", "Express"],
     url: "https://phase-4-photo-store-project-jmm2.onrender.com/",
     github: "https://github.com/swarui/Phase-4-Photo-Store-Project.git",
     website: "https://phase-4-photo-store-project-jmm2.onrender.com/",
@@ -58,17 +62,17 @@ function Projects() {
   }, [])
 
   return (
-    <div style={{ fontFamily: "Afacad",  }} id="projects" className="max-w-[800px] w-[90%] mx-auto py-16">
+    <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[800px] w-[90%] mx-auto py-16">
       <h1 className="text-left text-4xl font-bold text-white mb-2">Projects</h1>
       <p className="text-left text-gray-400 mb-12">Check out some of my recent work</p>
 
-      <div className="grid grid-cols-1 gap-12">
+      <div className="grid grid-cols-1 gap-8">
         {projo.map((project) => (
           <div key={project.id} data-aos="fade-up" className="group">
-            <div className="bg-gradient-to-r from-[rgb(18,18,18)] to-[#302f2f]  border border-gray-800 rounded-xl overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500">
+            <div className="bg-gradient-to-r from-[rgb(18,18,18)] to-[#302f2f] border border-gray-800 rounded-xl overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500">
               <div className="flex flex-col lg:flex-row p-2">
                 {/* Image Container */}
-                <div className="relative w-full lg:w-2/4 bg-gradient-to-r from-[#2a2a2a] to-[#121212] rounded-lg p-4">
+                <div className="relative w-full lg:w-2/5 bg-gradient-to-r from-[#2a2a2a] to-[#121212] rounded-lg p-4">
                   <div className="w-full h-[200px] lg:h-[170px] rounded-lg overflow-hidden p-1">
                     <img
                       src={project.image || "/placeholder.svg"}
@@ -80,20 +84,32 @@ function Projects() {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-6 lg:p-8 w-full lg:w-3/5 flex flex-col justify-center">
-                  <h2 className="text-2xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">
+                <div className="p-4 lg:p-6 w-full lg:w-3/5 flex flex-col justify-center">
+                  <h2 className="text-2xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h2>
-                  <p className="text-gray-400 mb-6">{project.description}</p>
+                  <p className="text-gray-400 mb-3">{project.description}</p>
 
-                  <div className="flex items-center gap-4">
+                  {/* Technologies - rectangular with grey bg, positioned below description */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="bg-[#3b3b3b] text-white text-xs px-3 py-1 rounded-sm border border-gray-700"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-4 mt-auto">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-400 hover:text-blue-300 transition-colors"
                     >
-                      <FaGithub className="w-6 h-6" />
+                      <FaGithub className="w-5 h-5" />
                     </a>
                     <a
                       href={project.website}
@@ -101,7 +117,7 @@ function Projects() {
                       rel="noopener noreferrer"
                       className="text-blue-400 hover:text-blue-300 transition-colors"
                     >
-                      <AiOutlineGlobal className="w-6 h-6" />
+                      <AiOutlineGlobal className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
@@ -115,3 +131,4 @@ function Projects() {
 }
 
 export default Projects
+
