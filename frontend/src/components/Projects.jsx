@@ -11,6 +11,8 @@ import img1 from "../assets/1.png"
 import img2 from "../assets/2.png"
 import img3 from "../assets/3.png"
 import img4 from "../assets/4.png"
+import img5 from "../assets/5.png"
+
 
 const projo = [
   {
@@ -18,7 +20,7 @@ const projo = [
     title: "Movie Recommendation",
     description: "A movie recommendation website that helps you select movies to your preference.",
     image: img3,
-    technologies: ["React", "CSS", "TMDb API"],
+    technologies: ["HTML", "CSS", "JS"],
     url: "https://swarui.github.io/movie-web-app/",
     github: "https://github.com/swarui/movie-web-app.git",
     website: "https://swarui.github.io/movie-web-app/",
@@ -28,7 +30,7 @@ const projo = [
     title: "Coffee Shop",
     description: "A coffee website that showcases a variety of premium coffee, expertly brewed.",
     image: img4,
-    technologies: ["HTML", "CSS", "JavaScript"],
+    technologies: ["React", "TailwindCss", "Flask"],
     url: "https://kahawa-ke.netlify.app/",
     github: "https://github.com/swarui/coffeelandingpage",
     website: "https://kahawa-ke.netlify.app/",
@@ -38,7 +40,7 @@ const projo = [
     title: "Flight Booking",
     description: "A website that allows users to book their flights to various destinations.",
     image: img1,
-    technologies: ["React", "Tailwind", "Node.js"],
+    technologies: ["React", "CSS", "Bootstrap", "Sweetalert" ],
     url: "https://flight-fusion-booking-website.vercel.app/",
     github: "https://github.com/VictorMurithi/FlightFusion-booking-website.git",
     website: "https://flight-fusion-booking-website.vercel.app/",
@@ -48,7 +50,17 @@ const projo = [
     title: "Photo Store",
     description: "An application that allows users to post, like, add, and delete photos.",
     image: img2,
-    technologies: ["React", "MongoDB", "Express"],
+    technologies: ["React", "Python", "SemanticUI", "CSS"],
+    url: "https://phase-4-photo-store-project-jmm2.onrender.com/",
+    github: "https://github.com/swarui/Phase-4-Photo-Store-Project.git",
+    website: "https://phase-4-photo-store-project-jmm2.onrender.com/",
+  },
+  {
+    id: 5,
+    title: "Portifolio Website",
+    description: "An application that allows users to post, like, add, and delete photos.",
+    image: img5,
+    technologies: ["React", "TailwindCSS", "Python"],
     url: "https://phase-4-photo-store-project-jmm2.onrender.com/",
     github: "https://github.com/swarui/Phase-4-Photo-Store-Project.git",
     website: "https://phase-4-photo-store-project-jmm2.onrender.com/",
