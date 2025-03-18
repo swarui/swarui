@@ -74,9 +74,9 @@ function Projects() {
   }, [])
 
   return (
-    <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[790px] w-[90%] mx-auto py-16">
+    <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[790px] w-[90%] mx-auto ">
       <h1 className="text-left text-4xl font-bold text-white mb-2">Projects</h1>
-      <p className="text-left text-gray-400 mb-12">Check out some of my recent work</p>
+      <p className="text-left text-gray-400 mb-10">Check out some of my recent work</p>
 
       <div className="grid grid-cols-1 gap-8">
         {projo.map((project) => (
