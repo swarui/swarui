@@ -50,7 +50,7 @@ const projo = [
     title: "Photo Store",
     description: "An application that allows users to post, like, add, and delete photos.",
     image: img2,
-    technologies: ["React", "Python", "SemanticUI", "CSS"],
+    technologies: ["React", "Flask", "SemanticUI", "CSS"],
     url: "https://phase-4-photo-store-project-jmm2.onrender.com/",
     github: "https://github.com/swarui/Phase-4-Photo-Store-Project.git",
     website: "https://phase-4-photo-store-project-jmm2.onrender.com/",
