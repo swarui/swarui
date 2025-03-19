@@ -38,6 +38,57 @@ function Contact() {
     return () => window.removeEventListener("resize", checkIfMobile)
   }, [])
 
+  // Handle keyboard visibility on mobile
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    // Function to handle viewport height adjustments when keyboard appears
+    const handleResize = () => {
+      // Use CSS custom property to set the viewport height
+      document.documentElement.style.setProperty("--vh", `${window.innerHeight * 0.01}px`)
+    }
+
+    // Initial call
+    handleResize()
+
+    // Add event listeners for resize and orientation change
+    window.addEventListener("resize", handleResize)
+    window.addEventListener("orientationchange", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("orientationchange", handleResize)
+    }
+  }, [])
+
+  // Add this useEffect hook to handle navbar positioning when keyboard appears
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    // Get the navbar element - adjust the selector to match your navbar
+    const navbar = document.querySelector("nav")
+    if (!navbar) return
+
+    const initialHeight = window.innerHeight
+
+    const handleResize = () => {
+      // If window height is significantly reduced, keyboard is likely visible
+      const keyboardVisible = window.innerHeight < initialHeight * 0.75
+
+      // Toggle between fixed and static positioning based on keyboard visibility
+      if (keyboardVisible) {
+        navbar.classList.remove("fixed", "top-0")
+        navbar.classList.add("relative")
+      } else {
+        navbar.classList.remove("relative")
+        navbar.classList.add("fixed", "top-0")
+      }
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(email)
@@ -78,7 +129,7 @@ function Contact() {
   const handleBack = () => setStep((prev) => prev - 1)
 
   const handleSubmit = async (e) => {
-    e?.preventDefault()
+    if (e) e.preventDefault()
 
     // Validate message
     if (!formData.message.trim()) {
@@ -112,7 +163,7 @@ function Contact() {
   }
 
   return (
-    <div id="contact" className="px-4 sm:px-0">
+    <div id="contact" className="px-4 sm:px-0" style={{ minHeight: "calc(var(--vh, 1vh) * 100)" }}>
       <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[90%] mx-auto ">
         <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mb-2">Reach Out</h1>
         <p className="text-left text-gray-400 mb-8 sm:mb-12">Connect with me :)</p>
