@@ -483,7 +483,7 @@ function Contact() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-500 group-hover:-translate-y-1">
+            {/* <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-500 group-hover:-translate-y-1">
               <FaTelegramPlane className="text-xl sm:text-2xl text-white" />
             </div>
             <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
@@ -495,7 +495,7 @@ function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
-          >
+          > */}
             <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 group-hover:-translate-y-1">
               <FaInstagram className="text-xl sm:text-2xl text-white" />
             </div>
