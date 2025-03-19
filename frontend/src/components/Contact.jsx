@@ -61,7 +61,7 @@ function Contact() {
     }
   }, [])
 
-  // Add this useEffect hook to handle navbar positioning when keyboard appears
+  // Replace the existing useEffect hook for keyboard detection with this one
   useEffect(() => {
     if (typeof window === "undefined") return
 
@@ -75,13 +75,13 @@ function Contact() {
       // If window height is significantly reduced, keyboard is likely visible
       const keyboardVisible = window.innerHeight < initialHeight * 0.75
 
-      // Toggle between fixed and static positioning based on keyboard visibility
+      // Instead of changing position type, move the navbar up when keyboard is visible
       if (keyboardVisible) {
-        navbar.classList.remove("fixed", "top-0")
-        navbar.classList.add("relative")
+        // Keep navbar fixed but move it up out of view
+        navbar.style.transform = "translateY(-100%)"
       } else {
-        navbar.classList.remove("relative")
-        navbar.classList.add("fixed", "top-0")
+        // Reset position when keyboard is hidden
+        navbar.style.transform = "translateY(0)"
       }
     }
 
