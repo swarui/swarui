@@ -51,7 +51,7 @@ function Navbar() {
       >
         {/* Logo */}
         <a
-          style={{ fontFamily: "Afacad",fontSize: "1.3rem" }}
+          style={{ fontFamily: "Afacad",fontSize: "1.1rem" }}
           href="/"
           className="text-gray-300 hover:text-white transition-colors ml-4"
           >
