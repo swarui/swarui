@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 5)
-    }
+      setIsScrolled(window.scrollY > 5);
+    };
 
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setIsOpen(false)
-        document.body.style.overflow = "unset"
+        setIsOpen(false);
+        document.body.style.overflow = "unset";
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-    document.body.style.overflow = isOpen ? "unset" : "hidden"
-  }
+    setIsOpen(!isOpen);
+    document.body.style.overflow = isOpen ? "unset" : "hidden";
+  };
 
   return (
     <>
@@ -50,22 +50,29 @@ function Navbar() {
         style={{ position: "fixed", zIndex: 1002 }} // Higher z-index to appear above
       >
         {/* Logo */}
-        <a style={{ fontFamily: "Nunito" }} href="/" className="text-1xl text-white">
-          &lt;Steve/&gt;
+        <a
+          style={{ fontFamily: "Nunito",fontSize: "1.1rem" }}
+          href="/"
+          className="text-base sm:text-lg md:text-md text-white"
+          >
+          Steve
         </a>
 
         {/* Desktop Navigation */}
         <div
-          style={{ fontFamily: "Afacad", fontSize: "1.2rem" }}
+          style={{ fontFamily: "Afacad", fontSize: "1.1rem" }}
           className="flex items-center"
         >
-          <a href="/#contact" className="text-gray-300 hover:text-white transition-colors ml-4">
+          <a
+            href="/#contact"
+            className="text-gray-300 hover:text-white transition-colors ml-4"
+          >
             Reach Out
           </a>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

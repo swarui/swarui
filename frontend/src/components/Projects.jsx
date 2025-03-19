@@ -71,14 +71,20 @@ function Projects() {
           <div key={project.id} data-aos="fade-up" className="group">
             <div className="bg-gradient-to-r from-[rgb(18,18,18)] to-[#302f2f] border border-gray-800 rounded-xl overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500">
               <div className="flex flex-col md:flex-row p-3">
-                {/* Image Container - Fixed stretching and rounded corners */}
+                {/* Image Container - Improved with consistent sizing and background */}
                 <div className="w-full md:w-2/5 bg-gradient-to-r from-[#2a2a2a] to-[#121212] rounded-lg p-3 flex items-center justify-center">
-                  <div className="w-full h-[180px] md:h-[160px] rounded-lg overflow-hidden flex items-center justify-center">
+                  <div className="w-full h-[180px] md:h-[160px] rounded-lg overflow-hidden flex items-center justify-center relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1e1e1e] to-[#0f0f0f] opacity-50"></div>
                     <img
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="rounded-lg max-w-full max-h-full object-contain"
-                      style={{ width: "auto", height: "auto" }}
+                      className="relative z-10 rounded-lg max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                      style={{
+                        width: "auto",
+                        height: "auto",
+                        maxHeight: "calc(100% - 16px)",
+                        maxWidth: "calc(100% - 16px)",
+                      }}
                     />
                   </div>
                 </div>
@@ -102,7 +108,7 @@ function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4 mt-2 sm:mt-3">
+                  <div className="flex items-center gap-4 mt-auto pt-2 sm:pt-3">
                     <a
                       href={project.website}
                       target="_blank"
