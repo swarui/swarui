@@ -62,7 +62,7 @@ function Projects() {
   }, [])
 
   return (
-    <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[790px] w-[90%] mx-auto">
+    <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[790px] w-[90%] mx-auto pb-16">
       <h1 className="text-left text-4xl font-bold text-white mb-2">Projects</h1>
       <p className="text-left text-gray-400 mb-10">Check out some of my recent work</p>
 
@@ -70,41 +70,39 @@ function Projects() {
         {projo.map((project) => (
           <div key={project.id} data-aos="fade-up" className="group">
             <div className="bg-gradient-to-r from-[rgb(18,18,18)] to-[#302f2f] border border-gray-800 rounded-xl overflow-hidden shadow-2xl hover:shadow-blue-900/20 transition-all duration-500">
-              <div className="flex flex-col lg:flex-row p-2">
-                {/* Image Container */}
-                <div className="relative w-full lg:w-2/5 bg-gradient-to-r from-[#2a2a2a] to-[#121212] rounded-lg p-4">
-                  <div className="w-full h-[200px] lg:h-[170px] rounded-lg overflow-hidden p-1">
+              <div className="flex flex-col md:flex-row p-3">
+                {/* Image Container - Fixed stretching and rounded corners */}
+                <div className="w-full md:w-2/5 bg-gradient-to-r from-[#2a2a2a] to-[#121212] rounded-lg p-3 flex items-center justify-center">
+                  <div className="w-full h-[180px] md:h-[160px] rounded-lg overflow-hidden flex items-center justify-center">
                     <img
                       src={project.image || "/placeholder.svg"}
-                      loading="lazy"
                       alt={project.title}
-                      className="w-full h-full rounded-lg object-cover duration-700"
+                      className="rounded-lg max-w-full max-h-full object-contain"
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                 </div>
 
                 {/* Content Section */}
-                <div className="p-4 lg:p-6 w-full lg:w-3/5 flex flex-col justify-between">
-                  <div>
-                    <h2 className="text-2xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">
-                      {project.title}
-                    </h2>
-                    <p className="text-gray-400 mb-3">{project.description}</p>
+                <div className="p-3 w-full md:w-3/5 flex flex-col">
+                  <h2 className="text-xl sm:text-2xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h2>
+                  <p className="text-gray-400 mb-2 text-xs sm:text-sm">{project.description}</p>
 
-                    {/* Technologies - rectangular with grey bg, positioned below description */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="bg-[#3b3b3b] text-white text-xs px-3 py-1 rounded-sm border border-gray-700"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
+                    {project.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="bg-[#3b3b3b] text-white text-xs px-2 sm:px-3 py-1 rounded-sm border border-gray-700"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
 
-                  <div className="flex items-center gap-4 mt-4">
+                  <div className="flex items-center gap-4 mt-2 sm:mt-3">
                     <a
                       href={project.website}
                       target="_blank"
@@ -114,7 +112,7 @@ function Projects() {
                       <span className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-blue-300 after:transition-all after:duration-300 group-hover/link:after:w-full">
                         Visit Site
                       </span>
-                      <ArrowUpRight className="w-4 h-4 transform transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+                      <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 transform transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                     </a>
                   </div>
                 </div>
