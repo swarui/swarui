@@ -162,8 +162,8 @@ function Contact() {
   }
 
   return (
-    <div id="contact" className="px-4 sm:px-0" style={{ minHeight: "calc(var(--vh, 1vh) * 100)" }}>
-      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-full mx-auto">
+    <div id="contact" className="px-4 sm:px-0">
+      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[90%]  mx-auto">
         {/* Reduced top margin for mobile */}
         <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mt-5 sm:mt-3">Reach Out</h1>
         <p className="text-left text-gray-400 mb-4 sm:mb-8">Connect with me :)</p>

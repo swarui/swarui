@@ -53,7 +53,7 @@ function Projects() {
   }, [])
 
   return (
-    <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[790px] w-[90%] mx-auto">
+    <div style={{ fontFamily: "Afacad" }} id="projects" className="max-w-[790px]  mt-20  w-[90%] mx-auto">
      <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mg:mt-0 mb-2">Projects</h1>
 <p className="text-left text-gray-400 mb-6 md:mb-10">Check out some of my recent work.</p>
 
