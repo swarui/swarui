@@ -22,7 +22,7 @@ const skills = [
 export default function Skills() {
   return (
     <div style={{ fontFamily: "Afacad" }} id="skills" className="max-w-[780px] w-[90%] mx-auto py-8 md:py-16">
-      <h1 className="text-left text-3xl md:text-4xl font-bold text-white mb-2">Technologies</h1>
+      <h1 className="text-left text-3xl md:text-4xl font-bold text-white mt-5">Technologies</h1>
       <p className="text-left text-gray-400 mb-8 md:mb-12">My Technologies and Skill Set</p>
 
       <div className="flex flex-wrap gap-2 sm:gap-3">
