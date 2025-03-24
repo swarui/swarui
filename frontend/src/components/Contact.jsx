@@ -2,7 +2,6 @@
 import { FaGithub } from "react-icons/fa"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { FaXTwitter } from "react-icons/fa6"
-import { FaTelegramPlane } from "react-icons/fa"
 import { FaInstagram } from "react-icons/fa"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -164,12 +163,13 @@ function Contact() {
 
   return (
     <div id="contact" className="px-4 sm:px-0" style={{ minHeight: "calc(var(--vh, 1vh) * 100)" }}>
-      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[90%] mx-auto ">
-        <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mb-2">Reach Out</h1>
-        <p className="text-left text-gray-400 mb-8 sm:mb-12">Connect with me :)</p>
+      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-full mx-auto">
+        {/* Reduced top margin for mobile */}
+        <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">Reach Out</h1>
+        <p className="text-left text-gray-400 mb-4 sm:mb-8">Connect with me :)</p>
 
-        {/* Progress Indicator */}
-        <div className="flex justify-center mb-4 sm:mb-6">
+        {/* Progress Indicator - reduced margin for mobile */}
+        <div className="flex justify-center mb-3 sm:mb-6">
           <div className="flex items-center w-full max-w-[250px] sm:max-w-[300px]">
             {[1, 2, 3].map((stepNumber) => (
               <div key={stepNumber} className="flex-1 flex items-center">
@@ -190,8 +190,8 @@ function Contact() {
           </div>
         </div>
 
-        {/* Form Steps */}
-        <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-4 sm:p-6 rounded-lg shadow-xl">
+        {/* Form Steps - reduced padding for mobile */}
+        <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-3 sm:p-6 rounded-lg shadow-xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -199,7 +199,7 @@ function Contact() {
               animate="visible"
               exit="exit"
               variants={formVariants}
-              className="w-full sm:w-[90%] max-w-[800px] mx-auto"
+              className="w-full mx-auto"
             >
               {step === 1 && (
                 <form
@@ -208,7 +208,7 @@ function Contact() {
                     handleNext()
                   }}
                 >
-                  <h2 className="mb-4 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your name?</h2>
+                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your name?</h2>
                   <div className="relative">
                     <input
                       type="text"
@@ -217,16 +217,16 @@ function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your name"
-                      className={`w-full p-2.5 sm:p-3 mb-1 border ${
+                      className={`w-full p-2 sm:p-3 mb-1 border ${
                         errors.name ? "border-red-500" : "border-gray-600"
                       } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
                     />
-                    {errors.name && <p className="text-red-500 text-xs sm:text-sm mb-2 sm:mb-4">{errors.name}</p>}
+                    {errors.name && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.name}</p>}
                   </div>
-                  <div className="flex justify-end mt-4 sm:mt-6">
+                  <div className="flex justify-end mt-3 sm:mt-6">
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
                     >
                       Next
                       <svg
@@ -250,7 +250,7 @@ function Contact() {
                     handleNext()
                   }}
                 >
-                  <h2 className="mb-4 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your email address?</h2>
+                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your email address?</h2>
                   <div className="relative">
                     <input
                       type="email"
@@ -259,17 +259,17 @@ function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Enter your email"
-                      className={`w-full p-2.5 sm:p-3 mb-1 border ${
+                      className={`w-full p-2 sm:p-3 mb-1 border ${
                         errors.email ? "border-red-500" : "border-gray-600"
                       } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
                     />
-                    {errors.email && <p className="text-red-500 text-xs sm:text-sm mb-2 sm:mb-4">{errors.email}</p>}
+                    {errors.email && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.email}</p>}
                   </div>
-                  <div className="flex justify-between mt-4 sm:mt-6">
+                  <div className="flex justify-between mt-3 sm:mt-6">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
                     >
                       <svg
                         className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
@@ -284,7 +284,7 @@ function Contact() {
                     </button>
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
                     >
                       Next
                       <svg
@@ -303,7 +303,7 @@ function Contact() {
 
               {step === 3 && (
                 <form onSubmit={handleSubmit}>
-                  <h2 className="mb-4 sm:mb-5 text-white text-lg sm:text-xl font-medium">
+                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">
                     What would you like to say?
                   </h2>
                   <div className="relative">
@@ -313,18 +313,18 @@ function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Enter your message"
-                      rows={4}
-                      className={`w-full p-2.5 sm:p-3 mb-1 border ${
+                      rows={3}
+                      className={`w-full p-2 sm:p-3 mb-1 border ${
                         errors.message ? "border-red-500" : "border-gray-600"
                       } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none`}
                     />
-                    {errors.message && <p className="text-red-500 text-xs sm:text-sm mb-2 sm:mb-4">{errors.message}</p>}
+                    {errors.message && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.message}</p>}
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0 mt-4 sm:mt-6">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0 mt-3 sm:mt-6">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-2 rounded-md transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base"
+                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base"
                     >
                       <svg
                         className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
@@ -340,7 +340,7 @@ function Contact() {
                     <button
                       type="submit"
                       disabled={formState === "sending"}
-                      className={`px-4 sm:px-6 py-2 rounded-md text-white transition-all duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base
+                      className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-md text-white transition-all duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base
                         ${
                           formState === "sending"
                             ? "bg-yellow-500"
@@ -433,21 +433,21 @@ function Contact() {
           </AnimatePresence>
         </div>
 
-        {/* Social Links */}
-        <div className="mt-8 sm:mt-12 mb-3 sm:mb-4 text-center">
-          <h3 className="text-white text-lg sm:text-xl mb-4">Or connect with me on social media</h3>
+        {/* Social Links - reduced margins for mobile */}
+        <div className="mt-4 sm:mt-12 mb-2 sm:mb-4 text-center">
+          <h3 className="text-white text-base sm:text-xl mb-2 sm:mb-4">Or connect with me on social media</h3>
         </div>
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-2 sm:mt-4">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mt-1 sm:mt-4">
           <a
             href="https://github.com/swarui"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-700 group-hover:-translate-y-1">
-              <FaGithub className="text-xl sm:text-2xl text-white" />
+            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-700 group-hover:-translate-y-1">
+              <FaGithub className="text-lg sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
               GitHub
             </span>
           </a>
@@ -457,10 +457,10 @@ function Contact() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-700 group-hover:-translate-y-1">
-              <IoLogoLinkedin className="text-xl sm:text-2xl text-white" />
+            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-700 group-hover:-translate-y-1">
+              <IoLogoLinkedin className="text-lg sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
               LinkedIn
             </span>
           </a>
@@ -470,24 +470,11 @@ function Contact() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-900 group-hover:-translate-y-1">
-              <FaXTwitter className="text-xl sm:text-2xl text-white" />
+            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-900 group-hover:-translate-y-1">
+              <FaXTwitter className="text-lg sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Twitter
-            </span>
-          </a>
-          <a
-            href="https://t.me/swarui"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center group"
-          >
-            {/* <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-500 group-hover:-translate-y-1">
-              <FaTelegramPlane className="text-xl sm:text-2xl text-white" />
-            </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
-              Telegram
             </span>
           </a>
           <a
@@ -495,18 +482,18 @@ function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
-          > */}
-            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 group-hover:-translate-y-1">
-              <FaInstagram className="text-xl sm:text-2xl text-white" />
+          >
+            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 group-hover:-translate-y-1">
+              <FaInstagram className="text-lg sm:text-2xl text-white" />
             </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Instagram
             </span>
           </a>
           <a href="mailto:stevewaruim@gmail.com" className="flex flex-col items-center group">
-            <div className="bg-gray-800 p-2.5 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-red-500 group-hover:-translate-y-1">
+            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-red-500 group-hover:-translate-y-1">
               <svg
-                className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+                className="w-4 h-4 sm:w-6 sm:h-6 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
@@ -514,7 +501,7 @@ function Contact() {
                 <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" />
               </svg>
             </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1.5 sm:mt-2 group-hover:text-white transition-colors duration-300">
+            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Email
             </span>
           </a>
