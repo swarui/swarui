@@ -52,7 +52,6 @@ function Navbar() {
         {/* Logo */}
         <a
           style={{ fontFamily: "Afacad",fontSize: "1.2rem" }}
-          href="/"
           className="text-gray-300 hover:text-white transition-colors ml-"
           >
           Steve
@@ -64,7 +63,7 @@ function Navbar() {
           className="flex items-center"
         >
           <a
-            href="/#contact"
+            href="/contact"
             className="text-gray-300 hover:text-white transition-colors ml-4"
           >
             Reach Out
