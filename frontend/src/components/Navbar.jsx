@@ -51,10 +51,10 @@ function Navbar() {
       >
         {/* Logo */}
         <a
-          style={{ fontFamily: "Afacad",fontSize: "1.2rem" }}
-          href="/"
+          style={{ fontFamily: "Afacad", fontSize: "1.2rem" }}
+          href="#home" // Changed to anchor link
           className="text-gray-300 hover:text-white transition-colors ml-"
-          >
+        >
           Steve
         </a>
 
@@ -64,7 +64,7 @@ function Navbar() {
           className="flex items-center"
         >
           <a
-            href="/contact"
+            href="#contact" // Changed to anchor link
             className="text-gray-300 hover:text-white transition-colors ml-4"
           >
             Reach Out
