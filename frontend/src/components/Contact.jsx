@@ -3,10 +3,10 @@ import { FaGithub } from "react-icons/fa"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { FaXTwitter } from "react-icons/fa6"
 import { FaInstagram } from "react-icons/fa"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-function Contact() {
+export default function Contact() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
     name: "",
@@ -21,72 +21,19 @@ function Contact() {
   const [formState, setFormState] = useState("idle") // idle, sending, success, error
   const [isMobile, setIsMobile] = useState(false)
 
-  // Check if mobile on mount and when window resizes
-  useEffect(() => {
-    const checkIfMobile = () => {
+  // Check if mobile on mount
+  useState(() => {
+    if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 640)
-    }
 
-    // Initial check
-    checkIfMobile()
-
-    // Add event listener
-    window.addEventListener("resize", checkIfMobile)
-
-    // Cleanup
-    return () => window.removeEventListener("resize", checkIfMobile)
-  }, [])
-
-  // Handle keyboard visibility on mobile
-  useEffect(() => {
-    if (typeof window === "undefined") return
-
-    // Function to handle viewport height adjustments when keyboard appears
-    const handleResize = () => {
-      // Use CSS custom property to set the viewport height
-      document.documentElement.style.setProperty("--vh", `${window.innerHeight * 0.01}px`)
-    }
-
-    // Initial call
-    handleResize()
-
-    // Add event listeners for resize and orientation change
-    window.addEventListener("resize", handleResize)
-    window.addEventListener("orientationchange", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-      window.removeEventListener("orientationchange", handleResize)
-    }
-  }, [])
-
-  // Replace the existing useEffect hook for keyboard detection with this one
-  useEffect(() => {
-    if (typeof window === "undefined") return
-
-    // Get the navbar element - adjust the selector to match your navbar
-    const navbar = document.querySelector("nav")
-    if (!navbar) return
-
-    const initialHeight = window.innerHeight
-
-    const handleResize = () => {
-      // If window height is significantly reduced, keyboard is likely visible
-      const keyboardVisible = window.innerHeight < initialHeight * 0.75
-
-      // Instead of changing position type, move the navbar up when keyboard is visible
-      if (keyboardVisible) {
-        // Keep navbar fixed but move it up out of view
-        navbar.style.transform = "translateY(-100%)"
-      } else {
-        // Reset position when keyboard is hidden
-        navbar.style.transform = "translateY(0)"
+      const checkIfMobile = () => {
+        setIsMobile(window.innerWidth < 640)
       }
-    }
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+      window.addEventListener("resize", checkIfMobile)
+      return () => window.removeEventListener("resize", checkIfMobile)
+    }
+  })
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -162,13 +109,12 @@ function Contact() {
   }
 
   return (
-    <div id="contact" className="px-4 sm:px-0">
-      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[90%]  mx-auto">
-        {/* Reduced top margin for mobile */}
+    <div id="contact"  className="px-4 scroll-mt-20 sm:px-0">
+      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[90%] mx-auto">
         <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mt-5 sm:mt-3">Reach Out</h1>
         <p className="text-left text-gray-400 mb-4 sm:mb-8">Connect with me :)</p>
 
-        {/* Progress Indicator - reduced margin for mobile */}
+        {/* Progress Indicator */}
         <div className="flex justify-center mb-3 sm:mb-6">
           <div className="flex items-center w-full max-w-[250px] sm:max-w-[300px]">
             {[1, 2, 3].map((stepNumber) => (
@@ -190,7 +136,7 @@ function Contact() {
           </div>
         </div>
 
-        {/* Form Steps - reduced padding for mobile */}
+        {/* Form Steps */}
         <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-3 sm:p-6 rounded-lg shadow-xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -407,10 +353,7 @@ function Contact() {
                           Try Again
                         </>
                       ) : (
-                        <>
-                        
-                          Send Message
-                        </>
+                        <>Send Message</>
                       )}
                     </button>
                   </div>
@@ -420,7 +363,7 @@ function Contact() {
           </AnimatePresence>
         </div>
 
-        {/* Social Links - reduced margins for mobile */}
+        {/* Social Links */}
         <div className="mt-4 sm:mt-12 mb-2 sm:mb-4 text-center">
           <h3 className="text-white text-base sm:text-xl mb-2 sm:mb-4">Or connect with me on social media</h3>
         </div>
@@ -497,6 +440,3 @@ function Contact() {
     </div>
   )
 }
-
-export default Contact
-
