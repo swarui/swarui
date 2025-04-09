@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 function Home() {
   // Ensure the page starts at the Home section
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   }, []); // Empty dependency array means this effect runs once on mount
-
   return (
     <>
-      <div id="home" className=" min-h-screen sm:h-0 flex justify-center items-center relative z-[1] pt-[5rem] sm:pt-[8rem] mt-[10vh] overflow-hidden">
+      <div id="home"  className="flex justify-center items-center  relative z-[1] pt-[5rem] sm:pt-[8rem] mt-[10vh] overflow-hidden">
         <div className="max-w-[790px] w-[90%] mx-auto text-left px-2">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-medium font-['Afacad']">
             Hey There, I'm Steve <span className="text-blue-600">Warui</span>
@@ -21,7 +20,7 @@ function Home() {
             development. I pay close attention to every design I create,
             ensuring both its aesthetic appeal and functionality. I thrive on
             bringing ideas to life, transforming concepts into fully realized
-            projects and finding creative solutions to challenging problems.
+            projects and and finding creative solutions to challenging problems
           </h2>
           <a
             href="https://drive.google.com/file/d/14NKDR7rKWh7AYZVydE-f7V18-uSysHZn/view?usp=sharing"
@@ -31,6 +30,8 @@ function Home() {
               <span className="relative z-10">My Resume</span>
               <span className="absolute bottom-1 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </button>
+            
+            
           </a>
         </div>
       </div>
