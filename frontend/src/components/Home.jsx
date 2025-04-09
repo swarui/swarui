@@ -8,7 +8,7 @@ function Home() {
 
   return (
     <>
-      <div id="home" className="flex justify-center items-center relative z-[1] pt-[5rem] sm:pt-[8rem] mt-[10vh] overflow-hidden">
+      <div id="home" className=" min-h-screen sm:h-0 flex justify-center items-center relative z-[1] pt-[5rem] sm:pt-[8rem] mt-[10vh] overflow-hidden">
         <div className="max-w-[790px] w-[90%] mx-auto text-left px-2">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-medium font-['Afacad']">
             Hey There, I'm Steve <span className="text-blue-600">Warui</span>
