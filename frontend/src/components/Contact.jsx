@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Mail, Github, Linkedin, Twitter, Instagram, ArrowLeft, ArrowRight, Check, X, Loader2 } from "lucide-react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export default function Contact() {
   const [step, setStep] = useState(1)
