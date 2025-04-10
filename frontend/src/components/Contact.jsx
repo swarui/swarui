@@ -1,12 +1,8 @@
 "use client"
 
-import { FaGithub } from "react-icons/fa"
-import { IoLogoLinkedin } from "react-icons/io5"
-import { FaXTwitter } from "react-icons/fa6"
-import { FaInstagram } from "react-icons/fa"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Mail } from "lucide-react"
+import { Mail, Github, Linkedin, Twitter, Instagram, ArrowLeft, ArrowRight, Check, X, Loader2 } from "lucide-react"
 
 export default function Contact() {
   const [step, setStep] = useState(1)
@@ -143,25 +139,43 @@ export default function Contact() {
   }
 
   return (
-    <div id="contact" className=" flex flex-col justify-center px-4 py-8 sm:py-12 scroll-mt-10 sm:px-0">
-      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[95%] sm:w-[90%] mx-auto flex-1 flex flex-col">
-        <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mt-5 sm:mt-3">Reach Out</h1>
-        <p className="text-left text-gray-400 mb-4 sm:mb-8">Connect with me :)</p>
+    <div
+    style={{fontFamily:'Afacad'}}
+      id="contact"
+      className="flex flex-col justify-center px-4 py-12 sm:py-16 scroll-mt-10 sm:px-0 bg-gradient-to- to-black"
+    >
+      <div className="max-w-[800px] w-[95%] sm:w-[90%] mx-auto flex-1 flex flex-col">
+        <div className="mb-8 sm:mb-12">
+                <h1 className="text-left text-3xl md:text-4xl font-bold text-white mt-5">Reach out</h1>
+
+          <p className="text-left text-gray-400 mt-2">Let's connect :)</p>
+        </div>
 
         {/* Progress Indicator */}
-        <div className="flex justify-center mb-3 sm:mb-6">
-          <div className="flex items-center w-full max-w-[250px] sm:max-w-[300px]">
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <div className="flex items-center w-full max-w-[300px] sm:max-w-[400px]">
             {[1, 2, 3, 4].map((stepNumber) => (
               <div key={stepNumber} className="flex-1 flex items-center">
-                <div
-                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                    step >= stepNumber ? "bg-blue-600" : "bg-gray-700"
-                  } ${step === stepNumber ? "scale-125" : ""}`}
-                />
+                <div className="relative">
+                  <div
+                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 flex items-center justify-center
+                    ${step >= stepNumber ? "bg-gradient-to-r from-blue-500 to-blue-500" : "bg-gray-700"}`}
+                  >
+                    {step > stepNumber && <Check className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-white" />}
+                    {step === stepNumber && (
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse"></div>
+                    )}
+                  </div>
+                  {step === stepNumber && (
+                    <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap">
+                      Step {stepNumber}
+                    </div>
+                  )}
+                </div>
                 {stepNumber < 4 && (
                   <div
                     className={`flex-1 h-0.5 transition-all duration-500 ${
-                      step > stepNumber ? "bg-blue-600" : "bg-gray-700"
+                      step > stepNumber ? "bg-gradient-to-r from-blue-500 to-blue-500" : "bg-gray-700"
                     }`}
                   />
                 )}
@@ -171,7 +185,11 @@ export default function Contact() {
         </div>
 
         {/* Form Steps */}
-        <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-3 sm:p-6 rounded-lg shadow-xl flex-grow flex flex-col justify-center">
+        <div className="relative bg-gray-900 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800 backdrop-blur-sm flex-grow flex flex-col justify-center overflow-hidden">
+          {/* Background decorative elements */}
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-purple-00 opacity-10 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-pink-00 opacity-10 rounded-full blur-3xl"></div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -179,7 +197,7 @@ export default function Contact() {
               animate="visible"
               exit="exit"
               variants={formVariants}
-              className="w-full mx-auto flex flex-col"
+              className="w-full mx-auto flex flex-col relative z-10"
             >
               {step === 1 && (
                 <form
@@ -187,9 +205,9 @@ export default function Contact() {
                     e.preventDefault()
                     handleNext()
                   }}
-                  className="flex flex-col min-h-[200px] sm:min-h-[220px]"
+                  className="flex flex-col min-h-[220px] sm:min-h-[240px]"
                 >
-                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your name?</h2>
+                  <h2 className="mb-4 sm:mb-6 text-white text-xl sm:text-2xl font-medium">What's your name?</h2>
                   <div className="relative">
                     <input
                       type="text"
@@ -198,27 +216,24 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your name"
-                      className={`w-full p-2 sm:p-3 mb-1 border ${
-                        errors.name ? "border-red-500" : "border-gray-600"
-                      } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
+                      className={`w-full p-3 sm:p-4 mb-1 border ${
+                        errors.name ? "border-red-500" : "border-gray-700"
+                      } bg-gray-800/50 text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-gray-500`}
                     />
-                    {errors.name && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.name}</p>}
+                    {errors.name && (
+                      <p className="text-red-400 text-xs sm:text-sm mb-2 sm:mb-4 flex items-center">
+                        <X className="w-3 h-3 mr-1" />
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
-                  <div className="flex justify-end mt-3 sm:mt-6">
+                  <div className="flex justify-end mt-auto pt-4">
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-800 hover:to-blue-00 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-all duration-300 flex items-center text-sm sm:text-base font-medium shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
                     >
                       Next
-                      <svg
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                     </button>
                   </div>
                 </form>
@@ -230,9 +245,11 @@ export default function Contact() {
                     e.preventDefault()
                     handleNext()
                   }}
-                  className="flex flex-col min-h-[200px] sm:min-h-[220px]"
+                  className="flex flex-col min-h-[220px] sm:min-h-[240px]"
                 >
-                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your email address?</h2>
+                  <h2 className="mb-4 sm:mb-6 text-white text-xl sm:text-2xl font-medium">
+                    What's your email address?
+                  </h2>
                   <div className="relative">
                     <input
                       type="email"
@@ -241,43 +258,32 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Enter your email"
-                      className={`w-full p-2 sm:p-3 mb-1 border ${
-                        errors.email ? "border-red-500" : "border-gray-600"
-                      } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
+                      className={`w-full p-3 sm:p-4 mb-1 border ${
+                        errors.email ? "border-red-500" : "border-gray-700"
+                      } bg-gray-800/50 text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-gray-500`}
                     />
-                    {errors.email && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.email}</p>}
+                    {errors.email && (
+                      <p className="text-red-400 text-xs sm:text-sm mb-2 sm:mb-4 flex items-center">
+                        <X className="w-3 h-3 mr-1" />
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
-                  <div className="flex justify-between mt-3 sm:mt-6">
+                  <div className="flex justify-between mt-auto pt-4">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-gray-800 hover:bg-gray-700 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 flex items-center text-sm sm:text-base border border-gray-700"
                     >
-                      <svg
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
+                      <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                       Back
                     </button>
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-all duration-300 flex items-center text-sm sm:text-base font-medium shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
                     >
                       Next
-                      <svg
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                     </button>
                   </div>
                 </form>
@@ -289,9 +295,9 @@ export default function Contact() {
                     e.preventDefault()
                     handleNext()
                   }}
-                  className="flex flex-col min-h-[200px] sm:min-h-[220px]"
+                  className="flex flex-col min-h-[220px] sm:min-h-[240px]"
                 >
-                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your phone number?</h2>
+                  <h2 className="mb-4 sm:mb-6 text-white text-xl sm:text-2xl font-medium">What's your phone number?</h2>
                   <div className="relative">
                     <input
                       type="tel"
@@ -300,51 +306,40 @@ export default function Contact() {
                       value={formData.number}
                       onChange={handleChange}
                       placeholder="Enter your phone number"
-                      className={`w-full p-2 sm:p-3 mb-1 border ${
-                        errors.number ? "border-red-500" : "border-gray-600"
-                      } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
+                      className={`w-full p-3 sm:p-4 mb-1 border ${
+                        errors.number ? "border-red-500" : "border-gray-700"
+                      } bg-gray-800/50 text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-gray-500`}
                     />
-                    {errors.number && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.number}</p>}
+                    {errors.number && (
+                      <p className="text-red-400 text-xs sm:text-sm mb-2 sm:mb-4 flex items-center">
+                        <X className="w-3 h-3 mr-1" />
+                        {errors.number}
+                      </p>
+                    )}
                   </div>
-                  <div className="flex justify-between mt-3 sm:mt-6">
+                  <div className="flex justify-between mt-auto pt-4">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-gray-800 hover:bg-gray-700 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 flex items-center text-sm sm:text-base border border-gray-700"
                     >
-                      <svg
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
+                      <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                       Back
                     </button>
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                      className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-all duration-300 flex items-center text-sm sm:text-base font-medium shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
                     >
                       Next
-                      <svg
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                     </button>
                   </div>
                 </form>
               )}
 
               {step === 4 && (
-                <form onSubmit={handleSubmit} className="flex flex-col min-h-[200px] sm:min-h-[220px]">
-                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">
+                <form onSubmit={handleSubmit} className="flex flex-col min-h-[220px] sm:min-h-[240px]">
+                  <h2 className="mb-4 sm:mb-6 text-white text-xl sm:text-2xl font-medium">
                     What would you like to say?
                   </h2>
                   <div className="relative">
@@ -355,96 +350,53 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Enter your message"
                       rows={3}
-                      className={`w-full p-2 sm:p-3 mb-1 border ${
-                        errors.message ? "border-red-500" : "border-gray-600"
-                      } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none`}
+                      className={`w-full p-3 sm:p-4 mb-1 border ${
+                        errors.message ? "border-red-500" : "border-gray-700"
+                      } bg-gray-800/50 text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all resize-none placeholder:text-gray-500`}
                     />
-                    {errors.message && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.message}</p>}
+                    {errors.message && (
+                      <p className="text-red-400 text-xs sm:text-sm mb-2 sm:mb-4 flex items-center">
+                        <X className="w-3 h-3 mr-1" />
+                        {errors.message}
+                      </p>
+                    )}
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0 mt-3 sm:mt-6">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0 mt-auto pt-4">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base"
+                      className="bg-gray-800 hover:bg-gray-700 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base border border-gray-700"
                     >
-                      <svg
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
+                      <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                       Back
                     </button>
                     <button
                       type="submit"
                       disabled={formState === "sending"}
-                      className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-md text-white transition-all duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base
+                      className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-white transition-all duration-300 flex items-center justify-center sm:justify-start text-sm sm:text-base font-medium
                         ${
                           formState === "sending"
-                            ? "bg-yellow-500"
+                            ? "bg-amber-500"
                             : formState === "success"
-                              ? "bg-green-500"
+                              ? "bg-gradient-to-r from-emerald-500 to-green-500"
                               : formState === "error"
-                                ? "bg-red-500"
-                                : "bg-blue-600 hover:bg-blue-700"
+                                ? "bg-gradient-to-r from-red-500 to-rose-500"
+                                : "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-600 hover:to-blue-800 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30"
                         }`}
                     >
                       {formState === "sending" ? (
                         <>
-                          <svg
-                            className="animate-spin -ml-1 mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
+                          <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin" />
                           Sending...
                         </>
                       ) : formState === "success" ? (
                         <>
-                          <svg
-                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          Sent!
+                          <Check className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                          Message Sent!
                         </>
                       ) : formState === "error" ? (
                         <>
-                          <svg
-                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M6 18L18 6M6 6l12 12"
-                            />
-                          </svg>
+                          <X className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                           Try Again
                         </>
                       ) : (
@@ -459,70 +411,65 @@ export default function Contact() {
         </div>
 
         {/* Social Links */}
-        <div className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-center">
-          <h3 className="text-white text-base sm:text-xl mb-2 sm:mb-4">Or connect with me on social media</h3>
-        </div>
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mt-1 sm:mt-4">
-          <a
-            href="https://github.com/swarui"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center group"
-          >
-            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-700 group-hover:-translate-y-1">
-              <FaGithub className="text-lg sm:text-2xl text-white" />
-            </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
-              GitHub
-            </span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/stevewarui/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center group"
-          >
-            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-blue-700 group-hover:-translate-y-1">
-              <IoLogoLinkedin className="text-lg sm:text-2xl text-white" />
-            </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
-              LinkedIn
-            </span>
-          </a>
-          <a
-            href="https://x.com/swarui_"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center group"
-          >
-            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gray-900 group-hover:-translate-y-1">
-              <FaXTwitter className="text-lg sm:text-2xl text-white" />
-            </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
-              Twitter
-            </span>
-          </a>
-          <a
-            href="https://instagram.com/stevewarui_"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center group"
-          >
-            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-pink-500 group-hover:-translate-y-1">
-              <FaInstagram className="text-lg sm:text-2xl text-white" />
-            </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
-              Instagram
-            </span>
-          </a>
-          <a href="mailto:stevewaruim@gmail.com" className="flex flex-col items-center group">
-            <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-red-500 group-hover:-translate-y-1">
-              <Mail className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-            </div>
-            <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
-              Email
-            </span>
-          </a>
+        <div className="mt-8 sm:mt-12 mb-4 sm:mb-6 text-center">
+          <h3 className="text-white text-xl sm:text-2xl mb-6 ">Or connect with me on social media</h3>
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
+            <a href="https://github.com/swarui" target="_blank" rel="noopener noreferrer" className="group">
+              <div className="flex flex-col items-center">
+                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-gray-700 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-gray-700/30">
+                  <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+                  GitHub
+                </span>
+              </div>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/stevewarui/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <div className="flex flex-col items-center">
+                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-blue-600 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-blue-600/30">
+                  <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+                  LinkedIn
+                </span>
+              </div>
+            </a>
+            <a href="https://x.com/swarui_" target="_blank" rel="noopener noreferrer" className="group">
+              <div className="flex flex-col items-center">
+                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-black group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-black/30">
+                  <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+                  Twitter
+                </span>
+              </div>
+            </a>
+            <a href="https://instagram.com/stevewarui_" target="_blank" rel="noopener noreferrer" className="group">
+              <div className="flex flex-col items-center">
+                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-gradient-to-br group-hover:from-purple-600 group-hover:via-pink-600 group-hover:to-orange-600 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-pink-600/30">
+                  <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+                  Instagram
+                </span>
+              </div>
+            </a>
+            <a href="mailto:stevewaruim@gmail.com" className="group">
+              <div className="flex flex-col items-center">
+                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-gradient-to-r group-hover:from-red-500 group-hover:to-rose-500 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-red-500/30">
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
+                  Email
+                </span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
