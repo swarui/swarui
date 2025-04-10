@@ -143,7 +143,7 @@ export default function Contact() {
   }
 
   return (
-    <div id="contact" className="min-h-screen flex flex-col justify-center px-4 py-8 sm:py-12 scroll-mt-20 sm:px-0">
+    <div id="contact" className="min-h-screen flex flex-col justify-center px-4 py-8 sm:py-12 scroll-mt-10 sm:px-0">
       <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[95%] sm:w-[90%] mx-auto flex-1 flex flex-col">
         <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mt-5 sm:mt-3">Reach Out</h1>
         <p className="text-left text-gray-400 mb-4 sm:mb-8">Connect with me :)</p>
