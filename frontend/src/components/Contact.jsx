@@ -108,7 +108,7 @@ export default function Contact() {
 
     try {
       // Send data to Flask backend
-      const response = await fetch("https://swaruibackend.onrender.com/contact", {
+      const response = await fetch("http://localhost:5000/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -143,8 +143,8 @@ export default function Contact() {
   }
 
   return (
-    <div id="contact" className="min-h-screen px-4 scroll-mt-20 sm:px-0">
-      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[90%] mx-auto">
+    <div id="contact" className="min-h-screen flex flex-col justify-center px-4 py-8 sm:py-12 scroll-mt-20 sm:px-0">
+      <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[95%] sm:w-[90%] mx-auto flex-1 flex flex-col">
         <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mt-5 sm:mt-3">Reach Out</h1>
         <p className="text-left text-gray-400 mb-4 sm:mb-8">Connect with me :)</p>
 
@@ -171,7 +171,7 @@ export default function Contact() {
         </div>
 
         {/* Form Steps */}
-        <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-3 sm:p-6 rounded-lg shadow-xl">
+        <div className="bg-gradient-to-r from-[#302f2f] to-[#121212] p-3 sm:p-6 rounded-lg shadow-xl flex-grow flex flex-col justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -179,7 +179,7 @@ export default function Contact() {
               animate="visible"
               exit="exit"
               variants={formVariants}
-              className="w-full mx-auto"
+              className="w-full mx-auto flex flex-col"
             >
               {step === 1 && (
                 <form
@@ -187,6 +187,7 @@ export default function Contact() {
                     e.preventDefault()
                     handleNext()
                   }}
+                  className="flex flex-col min-h-[200px] sm:min-h-[220px]"
                 >
                   <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your name?</h2>
                   <div className="relative">
@@ -229,6 +230,7 @@ export default function Contact() {
                     e.preventDefault()
                     handleNext()
                   }}
+                  className="flex flex-col min-h-[200px] sm:min-h-[220px]"
                 >
                   <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your email address?</h2>
                   <div className="relative">
@@ -287,6 +289,7 @@ export default function Contact() {
                     e.preventDefault()
                     handleNext()
                   }}
+                  className="flex flex-col min-h-[200px] sm:min-h-[220px]"
                 >
                   <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your phone number?</h2>
                   <div className="relative">
@@ -340,7 +343,7 @@ export default function Contact() {
               )}
 
               {step === 4 && (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="flex flex-col min-h-[200px] sm:min-h-[220px]">
                   <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">
                     What would you like to say?
                   </h2>
@@ -456,7 +459,7 @@ export default function Contact() {
         </div>
 
         {/* Social Links */}
-        <div className="mt-4 sm:mt-12 mb-2 sm:mb-4 text-center">
+        <div className="mt-4 sm:mt-8 mb-2 sm:mb-4 text-center">
           <h3 className="text-white text-base sm:text-xl mb-2 sm:mb-4">Or connect with me on social media</h3>
         </div>
         <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mt-1 sm:mt-4">
