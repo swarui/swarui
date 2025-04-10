@@ -23,6 +23,12 @@ app.config['RECIPIENT_EMAIL'] = os.getenv('RECIPIENT_EMAIL', app.config['MAIL_US
 
 mail = Mail(app)
 
+# Route for the root URL
+@app.route("/", methods=["GET"])
+def home():
+    return "Welcome to the API! The contact form is available at /contact."
+
+# Contact form endpoint
 @app.route("/contact", methods=["POST"])
 def contact():
     # Extract data from the request
