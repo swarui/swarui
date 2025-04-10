@@ -1,28 +1,32 @@
 "use client"
+
 import { FaGithub } from "react-icons/fa"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { FaXTwitter } from "react-icons/fa6"
 import { FaInstagram } from "react-icons/fa"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Mail } from "lucide-react"
 
 export default function Contact() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    number: "",
     message: "",
   })
   const [errors, setErrors] = useState({
     name: "",
     email: "",
+    number: "",
     message: "",
   })
   const [formState, setFormState] = useState("idle") // idle, sending, success, error
   const [isMobile, setIsMobile] = useState(false)
 
   // Check if mobile on mount
-  useState(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 640)
 
@@ -33,11 +37,17 @@ export default function Contact() {
       window.addEventListener("resize", checkIfMobile)
       return () => window.removeEventListener("resize", checkIfMobile)
     }
-  })
+  }, [])
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(email)
+  }
+
+  const validatePhoneNumber = (number) => {
+    // Basic validation for phone numbers - accepts formats like: +1234567890, 123-456-7890, (123) 456-7890
+    const re = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/
+    return re.test(number)
   }
 
   const handleChange = (e) => {
@@ -69,6 +79,17 @@ export default function Contact() {
       }
     }
 
+    if (step === 3) {
+      if (!formData.number.trim()) {
+        setErrors({ ...errors, number: "Please enter your phone number" })
+        return
+      }
+      if (!validatePhoneNumber(formData.number)) {
+        setErrors({ ...errors, number: "Please enter a valid phone number" })
+        return
+      }
+    }
+
     setStep((prev) => prev + 1)
   }
 
@@ -85,19 +106,32 @@ export default function Contact() {
 
     setFormState("sending")
 
-    // Simulate API call
     try {
-      // Replace with actual API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      // Send data to Flask backend
+      const response = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong")
+      }
+
       setFormState("success")
 
       // Reset form after 3 seconds
       setTimeout(() => {
         setStep(1)
-        setFormData({ name: "", email: "", message: "" })
+        setFormData({ name: "", email: "", number: "", message: "" })
         setFormState("idle")
       }, 3000)
     } catch (error) {
+      console.error("Error submitting form:", error)
       setFormState("error")
     }
   }
@@ -109,7 +143,7 @@ export default function Contact() {
   }
 
   return (
-    <div id="contact"  className="px-4 scroll-mt-20 sm:px-0">
+    <div id="contact" className="px-4 scroll-mt-20 sm:px-0">
       <div style={{ fontFamily: "Afacad" }} className="max-w-[790px] w-[90%] mx-auto">
         <h1 className="text-left text-3xl sm:text-4xl font-bold text-white mt-5 sm:mt-3">Reach Out</h1>
         <p className="text-left text-gray-400 mb-4 sm:mb-8">Connect with me :)</p>
@@ -117,14 +151,14 @@ export default function Contact() {
         {/* Progress Indicator */}
         <div className="flex justify-center mb-3 sm:mb-6">
           <div className="flex items-center w-full max-w-[250px] sm:max-w-[300px]">
-            {[1, 2, 3].map((stepNumber) => (
+            {[1, 2, 3, 4].map((stepNumber) => (
               <div key={stepNumber} className="flex-1 flex items-center">
                 <div
                   className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                     step >= stepNumber ? "bg-blue-600" : "bg-gray-700"
                   } ${step === stepNumber ? "scale-125" : ""}`}
                 />
-                {stepNumber < 3 && (
+                {stepNumber < 4 && (
                   <div
                     className={`flex-1 h-0.5 transition-all duration-500 ${
                       step > stepNumber ? "bg-blue-600" : "bg-gray-700"
@@ -248,6 +282,64 @@ export default function Contact() {
               )}
 
               {step === 3 && (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    handleNext()
+                  }}
+                >
+                  <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">What's your phone number?</h2>
+                  <div className="relative">
+                    <input
+                      type="tel"
+                      autoFocus
+                      name="number"
+                      value={formData.number}
+                      onChange={handleChange}
+                      placeholder="Enter your phone number"
+                      className={`w-full p-2 sm:p-3 mb-1 border ${
+                        errors.number ? "border-red-500" : "border-gray-600"
+                      } bg-[#1a1a1a] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
+                    />
+                    {errors.number && <p className="text-red-500 text-xs sm:text-sm mb-1 sm:mb-4">{errors.number}</p>}
+                  </div>
+                  <div className="flex justify-between mt-3 sm:mt-6">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="bg-gray-700 hover:bg-gray-800 text-white px-3 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                    >
+                      <svg
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-md transition-colors duration-300 flex items-center text-sm sm:text-base"
+                    >
+                      Next
+                      <svg
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              {step === 4 && (
                 <form onSubmit={handleSubmit}>
                   <h2 className="mb-2 sm:mb-5 text-white text-lg sm:text-xl font-medium">
                     What would you like to say?
@@ -422,14 +514,7 @@ export default function Contact() {
           </a>
           <a href="mailto:stevewaruim@gmail.com" className="flex flex-col items-center group">
             <div className="bg-gray-800 p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:bg-red-500 group-hover:-translate-y-1">
-              <svg
-                className="w-4 h-4 sm:w-6 sm:h-6 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" />
-              </svg>
+              <Mail className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
             </div>
             <span className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2 group-hover:text-white transition-colors duration-300">
               Email
