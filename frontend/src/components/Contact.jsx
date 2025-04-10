@@ -415,8 +415,8 @@ export default function Contact() {
         {/* Social Links */}
         <div className="mt-8 sm:mt-12 mb-4 sm:mb-6 text-center">
           <h3 className="text-white text-xl sm:text-2xl mb-6 ">Or connect with me on social media</h3>
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-4">
-            <a href="https://github.com/swarui" target="_blank" rel="noopener noreferrer" className="group">
+          <div className="flex flex-nowrap justify-center gap-4 overflow-x-auto">
+          <a href="https://github.com/swarui" target="_blank" rel="noopener noreferrer" className="group">
               <div className="flex flex-col items-center">
                 <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-gray-700 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-gray-700/30">
                   <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
