@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Mail, Github, Linkedin, Twitter, Instagram, ArrowLeft, ArrowRight, Check, X, Loader2 } from "lucide-react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export default function Contact() {
   const [step, setStep] = useState(1)
@@ -22,6 +20,41 @@ export default function Contact() {
   })
   const [formState, setFormState] = useState("idle") // idle, sending, success, error
   const [isMobile, setIsMobile] = useState(false)
+
+  // Social links data
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: Github,
+      url: "https://github.com/swarui",
+      hoverClass: "hover:bg-gray-700 hover:shadow-gray-700/30",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: "https://www.linkedin.com/in/stevewarui/",
+      hoverClass: "hover:bg-blue-600 hover:shadow-blue-600/30",
+    },
+    {
+      name: "Twitter",
+      icon: Twitter,
+      url: "https://x.com/swarui_",
+      hoverClass: "hover:bg-black hover:shadow-black/30",
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      url: "https://instagram.com/stevewarui_",
+      hoverClass:
+        "hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-600 hover:shadow-pink-600/30",
+    },
+    {
+      name: "Email",
+      icon: Mail,
+      url: "mailto:stevewaruim@gmail.com",
+      hoverClass: "hover:bg-gradient-to-r hover:from-red-500 hover:to-rose-500 hover:shadow-red-500/30",
+    },
+  ]
 
   // Check if mobile on mount
   useEffect(() => {
@@ -142,13 +175,13 @@ export default function Contact() {
 
   return (
     <div
-    style={{fontFamily:'Afacad'}}
+      style={{ fontFamily: "Afacad" }}
       id="contact"
       className="flex flex-col justify-center px-4 py-12 sm:py-16 scroll-mt-10 sm:px-0 bg-gradient-to- to-black"
     >
       <div className="max-w-[800px] w-[95%] sm:w-[90%] mx-auto flex-1 flex flex-col">
         <div className="mb-8 sm:mb-12">
-                <h1 className="text-left text-3xl md:text-4xl font-bold text-white mt-5">Reach out</h1>
+          <h1 className="text-left text-3xl md:text-4xl font-bold text-white mt-5">Reach out</h1>
 
           <p className="text-left text-gray-400 mt-2">Let's connect :)</p>
         </div>
@@ -189,8 +222,8 @@ export default function Contact() {
         {/* Form Steps */}
         <div className="relative bg-gray-900 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800 backdrop-blur-sm flex-grow flex flex-col justify-center overflow-hidden">
           {/* Background decorative elements */}
-          <div className="absolute -top-24 -right-24 w-48 h-48 bg-purple-00 opacity-10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-pink-00 opacity-10 rounded-full blur-3xl"></div>
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-purple-00 opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-pink-00 opacity-10 rounded-full blur-3xl pointer-events-none"></div>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -412,65 +445,32 @@ export default function Contact() {
           </AnimatePresence>
         </div>
 
-        {/* Social Links */}
+        {/* Social Links - Completely Redesigned */}
         <div className="mt-8 sm:mt-12 mb-4 sm:mb-6 text-center">
-          <h3 className="text-white text-xl sm:text-2xl mb-6 ">Or connect with me on social media</h3>
-          <div className="flex flex-nowrap justify-center gap-4 overflow-x-auto">
-          <a href="https://github.com/swarui" target="_blank" rel="noopener noreferrer" className="group">
-              <div className="flex flex-col items-center">
-                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-gray-700 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-gray-700/30">
-                  <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+          <h3 className="text-white text-xl sm:text-2xl mb-6">Or connect with me on social media</h3>
+          <div className="flex flex-wrap justify-center gap-6">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+                style={{ isolation: "isolate" }}
+              >
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform 
+                      ${link.hoverClass} hover:-translate-y-2 hover:shadow-lg`}
+                  >
+                    <link.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  </div>
+                  <span className="text-gray-400 text-sm mt-2 transition-colors duration-300 hover:text-white">
+                    {link.name}
+                  </span>
                 </div>
-                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
-                  GitHub
-                </span>
-              </div>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/stevewarui/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group"
-            >
-              <div className="flex flex-col items-center">
-                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-blue-600 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-blue-600/30">
-                  <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
-                  LinkedIn
-                </span>
-              </div>
-            </a>
-            <a href="https://x.com/swarui_" target="_blank" rel="noopener noreferrer" className="group">
-              <div className="flex flex-col items-center">
-                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-black group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-black/30">
-                  <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
-                  Twitter
-                </span>
-              </div>
-            </a>
-            <a href="https://instagram.com/stevewarui_" target="_blank" rel="noopener noreferrer" className="group">
-              <div className="flex flex-col items-center">
-                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-gradient-to-br group-hover:from-purple-600 group-hover:via-pink-600 group-hover:to-orange-600 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-pink-600/30">
-                  <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
-                  Instagram
-                </span>
-              </div>
-            </a>
-            <a href="mailto:stevewaruim@gmail.com" className="group">
-              <div className="flex flex-col items-center">
-                <div className="bg-gray-800 p-3 sm:p-4 rounded-full transition-all duration-300 transform group-hover:bg-gradient-to-r group-hover:from-red-500 group-hover:to-rose-500 group-hover:-translate-y-2 group-hover:shadow-lg group-hover:shadow-red-500/30">
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <span className="text-gray-400 text-sm mt-2 group-hover:text-white transition-colors duration-300">
-                  Email
-                </span>
-              </div>
-            </a>
+              </a>
+            ))}
           </div>
         </div>
       </div>
